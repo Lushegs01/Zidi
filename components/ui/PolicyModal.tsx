@@ -67,7 +67,7 @@ export default function PolicyModal({ policyId, onClose }: PolicyModalProps) {
               {/* Close */}
               <button
                 onClick={onClose}
-                className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-black/5 text-[#6B6B7E] hover:bg-black/10 hover:text-[#1A1A2E] transition-colors"
+                className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center rounded-full bg-black/5 text-zidi-muted hover:bg-black/10 hover:text-zidi-text transition-colors"
                 aria-label="Close"
               >
                 <X size={18} />
@@ -76,15 +76,15 @@ export default function PolicyModal({ policyId, onClose }: PolicyModalProps) {
               <div className="p-8 sm:p-12">
                 <h2
                   id="policy-modal-title"
-                  className="font-display text-3xl font-bold text-[#1A1A2E] mb-1"
+                  className="font-display text-3xl font-bold text-zidi-text mb-1"
                 >
                   {policy.title}
                 </h2>
-                <p className="text-sm text-[#6B6B7E] mb-8">
+                <p className="text-sm text-zidi-muted mb-8">
                   Last updated: {policy.lastUpdated}
                 </p>
 
-                <div className="space-y-5 text-[#1A1A2E]">
+                <div className="space-y-5 text-zidi-text">
                   {policy.sections.map((section, i) => (
                     <div key={i}>
                       {section.heading && (
@@ -93,14 +93,14 @@ export default function PolicyModal({ policyId, onClose }: PolicyModalProps) {
                         </h3>
                       )}
                       {section.content && (
-                        <p className="text-sm leading-relaxed text-[#1A1A2E]/80 mb-2">
+                        <p className="text-sm leading-relaxed text-zidi-text/80 mb-2">
                           {section.content}
                         </p>
                       )}
                       {section.isList && section.items && (
                         <ul className="list-disc list-outside ml-5 space-y-1.5">
                           {section.items.map((item, j) => (
-                            <li key={j} className="text-sm leading-relaxed text-[#1A1A2E]/80">
+                            <li key={j} className="text-sm leading-relaxed text-zidi-text/80">
                               {item}
                             </li>
                           ))}

@@ -110,8 +110,8 @@ function MatchingDiagram({ inView }: { inView: boolean }) {
           animate={{ scale: [1, 1.35, 1], opacity: [0.5, 0, 0.5] }}
           transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <div className="relative flex items-center justify-center w-20 h-20 rounded-full bg-gold shadow-[0_0_30px_rgba(201,138,0,0.35)]">
-          <span className="font-display font-bold text-midnight text-base tracking-widest uppercase">
+        <div className="relative flex items-center justify-center w-20 h-20 rounded-full bg-gold shadow-[0_0_30px_rgba(99,117,79,0.35)]">
+          <span className="font-display font-bold text-ivory text-base tracking-widest uppercase">
             Zidi
           </span>
         </div>
@@ -127,11 +127,11 @@ function MatchingDiagram({ inView }: { inView: boolean }) {
         animate={inView ? 'visible' : 'hidden'}
         className="w-full bg-midnight border border-white/[0.09] rounded-card px-5 py-4 flex items-center gap-3 shadow-md"
       >
-        <span className="flex items-center justify-center w-9 h-9 rounded-full bg-gold/10 text-gold shrink-0">
+        <span className="flex items-center justify-center w-9 h-9 rounded-full bg-gold-bright/15 text-gold-bright shrink-0">
           <UserCheck size={18} strokeWidth={1.75} />
         </span>
         <div>
-          <p className="text-xs font-semibold tracking-widest uppercase text-gold leading-none mb-0.5">
+          <p className="text-xs font-semibold tracking-widest uppercase text-gold-bright leading-none mb-0.5">
             Matched
           </p>
           <p className="font-display text-lg font-semibold text-white leading-snug">

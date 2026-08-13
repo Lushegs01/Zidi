@@ -16,30 +16,24 @@ const navLinks = [
   { label: 'For Parents', href: '#for-parents' },
 ]
 
-function ZidiLogo({ withBg = true }: { withBg?: boolean }) {
+function ZidiLogo({ dark = false }: { dark?: boolean }) {
+  const barColor = dark ? 'bg-gold-bright' : 'bg-midnight'
+  const wordmarkColor = dark ? 'text-ivory' : 'text-midnight'
   return (
     <a
       href="#"
       aria-label="Zidi — home"
       className="inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 rounded-full"
     >
-      <span
-        className={`inline-flex items-center gap-2 px-3 py-2 rounded-full ${
-          withBg ? 'bg-white' : ''
-        }`}
-      >
+      <span className="inline-flex items-center gap-2">
         {/* Ascending bar chart logo mark */}
         <span className="inline-flex items-end gap-[3px]" aria-hidden="true">
-          <span className="block w-2 rounded-sm bg-gold" style={{ height: '0.4rem' }} />
-          <span className="block w-2 rounded-sm bg-gold" style={{ height: '0.7rem' }} />
-          <span className="block w-2 rounded-sm bg-gold" style={{ height: '1rem' }} />
-          <span className="block w-2 rounded-sm bg-gold" style={{ height: '1.4rem' }} />
+          <span className={`block w-2 rounded-sm ${barColor}`} style={{ height: '0.4rem' }} />
+          <span className={`block w-2 rounded-sm ${barColor}`} style={{ height: '0.7rem' }} />
+          <span className={`block w-2 rounded-sm ${barColor}`} style={{ height: '1rem' }} />
+          <span className={`block w-2 rounded-sm ${barColor}`} style={{ height: '1.4rem' }} />
         </span>
-        <span
-          className={`font-display font-bold text-base tracking-wide leading-none ${
-            withBg ? 'text-midnight' : 'text-white'
-          }`}
-        >
+        <span className={`font-display font-bold text-base tracking-wide leading-none ${wordmarkColor}`}>
           ZIDI
         </span>
       </span>
@@ -77,13 +71,13 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 bg-midnight/95 backdrop-blur-md transition-all duration-300 ${
-          scrolled ? 'border-b border-gold/15' : ''
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? 'bg-ivory/90 backdrop-blur-md border-b border-midnight/[0.07] shadow-sm' : 'bg-transparent'
         }`}
       >
         <nav className="max-w-content mx-auto flex items-center justify-between py-4 px-5 md:py-5 md:px-6">
           {/* Logo */}
-          <ZidiLogo withBg={true} />
+          <ZidiLogo />
 
           {/* Desktop nav links */}
           <ul className="hidden md:flex items-center gap-7" role="list">
@@ -91,7 +85,7 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
               <li key={label}>
                 <button
                   onClick={() => scrollTo(href)}
-                  className="text-white/60 text-sm font-medium hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold"
+                  className="text-zidi-text/65 text-sm font-medium hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold"
                 >
                   {label}
                 </button>
@@ -100,7 +94,7 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
             <li>
               <button
                 onClick={onOpenWaitlist}
-                className="text-white/60 text-sm font-medium hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold"
+                className="text-zidi-text/65 text-sm font-medium hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold"
               >
                 Waitlist
               </button>
@@ -124,17 +118,17 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="block w-6 h-[2px] bg-white rounded-full origin-center"
+              className="block w-6 h-[2px] bg-midnight rounded-full origin-center"
             />
             <motion.span
               animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className="block w-6 h-[2px] bg-white rounded-full"
+              className="block w-6 h-[2px] bg-midnight rounded-full"
             />
             <motion.span
               animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="block w-6 h-[2px] bg-white rounded-full origin-center"
+              className="block w-6 h-[2px] bg-midnight rounded-full origin-center"
             />
           </button>
         </nav>
@@ -170,7 +164,7 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/8">
-                <ZidiLogo withBg={true} />
+                <ZidiLogo dark />
                 <button
                   onClick={() => setMenuOpen(false)}
                   aria-label="Close menu"
@@ -199,7 +193,7 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 + i * 0.06, duration: 0.25 }}
                     onClick={() => scrollTo(href)}
-                    className="text-left text-xl font-medium text-white/80 hover:text-gold py-4 border-b border-white/6 transition-colors duration-200 focus:outline-none focus-visible:text-gold"
+                    className="text-left text-xl font-medium text-white/80 hover:text-gold-bright py-4 border-b border-white/6 transition-colors duration-200 focus:outline-none focus-visible:text-gold-bright"
                   >
                     {label}
                   </motion.button>
@@ -212,7 +206,7 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
                     setMenuOpen(false)
                     onOpenWaitlist()
                   }}
-                  className="text-left text-xl font-medium text-white/80 hover:text-gold py-4 border-b border-white/6 transition-colors duration-200 focus:outline-none focus-visible:text-gold"
+                  className="text-left text-xl font-medium text-white/80 hover:text-gold-bright py-4 border-b border-white/6 transition-colors duration-200 focus:outline-none focus-visible:text-gold-bright"
                 >
                   Waitlist
                 </motion.button>
@@ -226,7 +220,7 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
                 className="px-6 pb-10 pt-6"
               >
                 <Button
-                  variant="gold"
+                  variant="dark"
                   size="md"
                   className="w-full"
                   onClick={() => scrollTo('#enrol')}

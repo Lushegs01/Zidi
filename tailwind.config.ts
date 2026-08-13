@@ -8,22 +8,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        midnight: '#0E1623',
-        'midnight-2': '#1A2540',
+        midnight: '#14120F',
+        'midnight-2': '#211E17',
         gold: {
-          DEFAULT: '#C98A00',
-          bright: '#E5A800',
-          pale: 'rgba(201,138,0,0.12)',
+          DEFAULT: '#63754F',
+          bright: '#7E9169',
+          pale: 'rgba(99,117,79,0.12)',
         },
         ivory: {
-          DEFAULT: '#F8F4ED',
-          dark: '#EDE8DF',
+          DEFAULT: '#F4EEE1',
+          dark: '#E8DFC9',
         },
-        forest: '#1A4731',
-        coral: '#D94F1E',
+        forest: '#3F4A34',
+        coral: '#C15A3D',
+        clay: '#AD8862',
         zidi: {
-          text: '#1A1A2E',
-          muted: '#6B6B7E',
+          text: '#17140F',
+          muted: '#82796B',
         },
       },
       fontFamily: {

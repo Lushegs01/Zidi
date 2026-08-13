@@ -38,7 +38,7 @@ export default function CulturalStory() {
   return (
     <section
       ref={sectionRef}
-      className="bg-midnight relative overflow-hidden"
+      className="bg-ivory relative overflow-hidden"
       aria-labelledby="cultural-story-heading"
     >
       {/* Subtle background texture — thin radial glow */}
@@ -47,7 +47,7 @@ export default function CulturalStory() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 60% 50% at 80% 40%, rgba(201,138,0,0.06) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 50% at 80% 40%, rgba(99,117,79,0.06) 0%, transparent 70%)',
         }}
       />
 
@@ -74,7 +74,7 @@ export default function CulturalStory() {
               variants={fadeUp}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              className="font-display text-white mb-8 leading-[1.05] tracking-[-0.025em]"
+              className="font-display text-midnight mb-8 leading-[1.05] tracking-[-0.025em]"
               style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}
             >
               Language is more
@@ -120,8 +120,8 @@ export default function CulturalStory() {
                   animate={isInView ? 'visible' : 'hidden'}
                   className={`font-body leading-relaxed ${
                     paragraph.highlight
-                      ? 'text-white font-semibold text-lg'
-                      : 'text-white/60 text-base'
+                      ? 'text-zidi-text font-semibold text-lg'
+                      : 'text-zidi-muted text-base'
                   }`}
                 >
                   {paragraph.text}
@@ -155,7 +155,7 @@ export default function CulturalStory() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      'linear-gradient(to top, rgba(14,22,35,0.35) 0%, transparent 50%)',
+                      'linear-gradient(to top, rgba(20,18,15,0.3) 0%, transparent 50%)',
                   }}
                 />
               </div>
@@ -183,7 +183,7 @@ export default function CulturalStory() {
                 className="relative w-full rounded-card overflow-hidden shadow-2xl"
                 style={{
                   aspectRatio: '4/3',
-                  border: '3px solid #C98A00',
+                  border: '3px solid #14120F',
                 }}
               >
                 <Image

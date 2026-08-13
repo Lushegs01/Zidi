@@ -7,9 +7,9 @@ type Variant = 'gold' | 'dark' | 'outline' | 'outline-dark'
 type Size = 'sm' | 'md' | 'lg'
 
 const variantClasses: Record<Variant, string> = {
-  gold: 'bg-gold text-midnight hover:bg-gold-bright font-semibold shadow-sm',
-  dark: 'bg-midnight text-white hover:bg-midnight-2 font-semibold shadow-sm',
-  outline: 'bg-transparent border border-white/30 text-white/85 hover:border-gold hover:text-gold font-medium',
+  gold: 'bg-midnight text-ivory hover:bg-midnight-2 font-semibold shadow-sm',
+  dark: 'bg-ivory-dark text-zidi-text hover:bg-[#DFD3B4] font-semibold',
+  outline: 'bg-transparent border border-white/25 text-ivory/90 hover:border-gold-bright hover:text-gold-bright font-medium',
   'outline-dark': 'bg-transparent border border-zidi-text/20 text-zidi-text hover:border-gold hover:text-gold font-medium',
 }
 

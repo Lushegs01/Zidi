@@ -64,7 +64,7 @@ function StepCard({ step, index }: { step: Step; index: number }) {
       animate="visible"
       whileHover={{
         y: -4,
-        boxShadow: '0 16px 40px rgba(14,22,35,0.10)',
+        boxShadow: '0 16px 40px rgba(20,18,15,0.10)',
         transition: { duration: 0.22, ease: 'easeOut' },
       }}
       className="relative bg-white rounded-card border border-black/[0.06] p-8 flex flex-col gap-5 overflow-hidden cursor-default"

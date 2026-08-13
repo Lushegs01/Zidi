@@ -29,7 +29,7 @@ function AnkaraStripe() {
       className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-card"
       style={{
         background:
-          'linear-gradient(180deg, #C98A00 0%, #C98A00 33%, #D94F1E 33%, #D94F1E 66%, #1A4731 66%, #1A4731 100%)',
+          'linear-gradient(180deg, #63754F 0%, #63754F 33%, #AD8862 33%, #AD8862 66%, #3F4A34 66%, #3F4A34 100%)',
       }}
     />
   )
@@ -52,11 +52,13 @@ function LiveCard({ subject, index, onEnroll }: LiveCardProps) {
       animate="visible"
       whileHover={{
         y: -4,
-        boxShadow: '0 20px 48px rgba(14,22,35,0.30)',
+        boxShadow: '0 20px 48px rgba(20,18,15,0.30)',
         transition: { duration: 0.22, ease: 'easeOut' },
       }}
       onClick={() => onEnroll?.(subject.id)}
-      className="relative bg-midnight border border-gold/25 rounded-card p-8 flex flex-col gap-6 cursor-pointer overflow-hidden focus-within:ring-2 focus-within:ring-gold/50 outline-none"
+      className={`relative rounded-card p-8 flex flex-col gap-6 cursor-pointer overflow-hidden focus-within:ring-2 focus-within:ring-gold/50 outline-none ${
+        index % 2 === 0 ? 'bg-midnight' : 'bg-forest'
+      }`}
       tabIndex={0}
       role="button"
       aria-label={`Enrol in ${subject.name}`}
@@ -70,8 +72,8 @@ function LiveCard({ subject, index, onEnroll }: LiveCardProps) {
       <AnkaraStripe />
 
       {/* Available now badge */}
-      <span className="self-start inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-semibold tracking-wide">
-        <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
+      <span className="self-start inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-gold-bright/40 text-gold-bright text-xs font-semibold tracking-wide">
+        <span className="w-1.5 h-1.5 rounded-full bg-gold-bright inline-block" />
         Available now
       </span>
 
@@ -87,7 +89,7 @@ function LiveCard({ subject, index, onEnroll }: LiveCardProps) {
 
       {/* CTA */}
       <motion.span
-        className="mt-auto inline-flex items-center gap-2 text-gold text-sm font-semibold"
+        className="mt-auto inline-flex items-center gap-2 text-gold-bright text-sm font-semibold"
         whileHover="hovered"
         initial="idle"
       >
