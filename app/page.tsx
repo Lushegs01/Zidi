@@ -8,10 +8,8 @@ import TrustBar from '@/components/home/TrustBar'
 import HowItWorks from '@/components/home/HowItWorks'
 import Subjects from '@/components/home/Subjects'
 import CulturalStory from '@/components/home/CulturalStory'
-import FamilySection from '@/components/home/FamilySection'
 import TutorMatching from '@/components/home/TutorMatching'
 import Pricing from '@/components/home/Pricing'
-import SafetySection from '@/components/home/SafetySection'
 import WaitlistSection from '@/components/home/WaitlistSection'
 import Enrollment, { type EnrollmentHandle } from '@/components/home/Enrollment'
 import PolicyModal from '@/components/ui/PolicyModal'
@@ -67,10 +65,8 @@ export default function HomePage() {
           onWaitlist={handleOpenWaitlist}
         />
         <CulturalStory />
-        <FamilySection />
         <TutorMatching />
         <Pricing onEnroll={handlePlanEnroll} />
-        <SafetySection onOpenPolicy={handleOpenPolicy} />
         <WaitlistSection onOpenWaitlist={handleOpenWaitlist} />
         <Enrollment ref={enrollmentRef} />
       </main>

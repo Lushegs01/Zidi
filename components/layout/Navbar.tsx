@@ -13,7 +13,6 @@ const navLinks = [
   { label: 'Learn', href: '#subjects' },
   { label: 'How it works', href: '#how-it-works' },
   { label: 'Pricing', href: '#pricing' },
-  { label: 'For Parents', href: '#for-parents' },
 ]
 
 function ZidiLogo({ dark = false }: { dark?: boolean }) {
