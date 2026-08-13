@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ──────────────────────────────────────────────────────── */
+:root {
+  --midnight:    #0E1623;
+  --midnight-2:  #1A2540;
+  --gold:        #C98A00;
+  --gold-bright: #E5A800;
+  --gold-pale:   rgba(201, 138, 0, 0.12);
+  --ivory:       #F8F4ED;
+  --ivory-dark:  #EDE8DF;
+  --forest:      #1A4731;
+  --coral:       #D94F1E;
+  --zidi-text:   #1A1A2E;
+  --zidi-muted:  #6B6B7E;
+}
+
+/* ── Base resets ────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+/* ── Gold pale background ───────────────────────────────────────────────── */
+.bg-gold-pale {
+  background-color: rgba(201, 138, 0, 0.12);
+}
+
+/* ── Scrollbar styling ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ivory-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* ── Focus visible ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(201, 138, 0, 0.2);
+  color: var(--zidi-text);
+}
+
+/* ── Ankara stripe pattern ──────────────────────────────────────────────── */
+.ankara-stripe {
+  background: repeating-linear-gradient(
+    180deg,
+    #C98A00   0px,  #C98A00  20px,
+    #D94F1E  20px, #D94F1E  40px,
+    #1A4731  40px, #1A4731  60px,
+    transparent 60px, transparent 70px
+  );
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Prose for policy modals ───────────────────────────────────────────── */
+.policy-body p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(26, 26, 46, 0.8);
+  margin-bottom: 0.75rem;
+}
+
+.policy-body ul {
+  margin: 0.4rem 0 0.85rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+.policy-body ul li {
+  margin-bottom: 0.35rem;
+  line-height: 1.7;
+  color: rgba(26, 26, 46, 0.8);
+}

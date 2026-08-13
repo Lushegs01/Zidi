@@ -1,0 +1,2575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn with Zidi — Expert tutors for Yoruba, Igbo, and more</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== TOKENS ===== */
+    :root {
+      --midnight:    #0E1623;
+      --midnight-2:  #1A2540;
+      --gold:        #C98A00;
+      --gold-bright: #E5A800;
+      --gold-pale:   rgba(201,138,0,0.12);
+      --ivory:       #F8F4ED;
+      --ivory-dark:  #EDE8DF;
+      --forest:      #1A4731;
+      --coral:       #D94F1E;
+      --text:        #1A1A2E;
+      --muted:       #6B6B7E;
+      --white:       #FFFFFF;
+
+      --ff-display: 'Fraunces', Georgia, serif;
+      --ff-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+      --r:    12px;
+      --r-sm: 6px;
+      --mw:   1120px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--ivory);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== RESETS ===== */
+    a { text-decoration: none; }
+    button { font-family: var(--ff-body); }
+    ul { list-style: none; }
+
+    /* ===== LAYOUT HELPERS ===== */
+    .container {
+      max-width: var(--mw);
+      margin: 0 auto;
+    }
+    .section-pad { padding: 6rem 2rem; }
+
+    .eyebrow {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .section-heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+    .section-heading-light { color: var(--white); }
+    .section-body {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 50ch;
+      line-height: 1.75;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--r-sm);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: background 0.18s, transform 0.15s, border-color 0.18s, color 0.18s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-lg { padding: 1rem 2rem; font-size: 1rem; }
+
+    .btn-gold { background: var(--gold); color: var(--midnight); }
+    .btn-gold:hover { background: var(--gold-bright); }
+
+    .btn-outline {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .btn-dark { background: var(--midnight); color: var(--white); }
+    .btn-dark:hover { background: var(--midnight-2); }
+
+    /* ===== TICKER ===== */
+    .ticker-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      background: var(--gold);
+      height: 36px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerScroll 40s linear infinite;
+    }
+    .ticker-track span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--midnight);
+      padding-right: 4rem;
+    }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 36px; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+      background: rgba(14,22,35,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,138,0,0.18);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      background: #ffffff;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+    }
+    .logo-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      font-size: 1.7rem; /* sets the cap unit context to match .logo-text */
+      font-family: var(--ff-display);
+      font-weight: 700;
+    }
+    .logo-bars span {
+      display: block;
+      width: 8px;
+      border-radius: 2px;
+      background: var(--gold);
+    }
+    .logo-bars span:nth-child(1) { height: 0.25cap; }
+    .logo-bars span:nth-child(2) { height: 0.5cap;  }
+    .logo-bars span:nth-child(3) { height: 0.75cap; }
+    .logo-bars span:nth-child(4) { height: 1cap;    }
+    .logo-text {
+      font-family: var(--ff-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #0E1623;
+      line-height: 1cap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Nav policies dropdown */
+    .nav-dropdown-wrap { position: relative; }
+    .nav-dropdown-trigger {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--ff-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .nav-dropdown-trigger:hover { color: var(--gold); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 1rem);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--midnight-2);
+      border: 1px solid rgba(201,138,0,0.2);
+      border-radius: var(--r);
+      padding: 0.5rem;
+      min-width: 200px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+      z-index: 999;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown-menu,
+    .nav-dropdown-wrap:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 0.5rem 0.85rem;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.82rem;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-dropdown-menu a:hover { background: rgba(201,138,0,0.1); color: var(--gold); }
+
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--midnight);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: calc(9rem + 36px) 2rem 5rem;
+    }
+
+    /* Ankara-inspired vertical stripe — the signature element */
+    .hero-stripe {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 7px;
+      background: repeating-linear-gradient(
+        180deg,
+        var(--gold)   0px,   var(--gold)   20px,
+        var(--coral)  20px,  var(--coral)  40px,
+        var(--forest) 40px,  var(--forest) 60px,
+        transparent   60px,  transparent   70px
+      );
+      opacity: 0.75;
+    }
+
+    /* Ghost Yoruba word for depth */
+    .hero-ghost {
+      position: absolute;
+      right: -3%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--ff-display);
+      font-size: clamp(11rem, 24vw, 21rem);
+      font-weight: 900;
+      color: rgba(201,138,0,0.055);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .hero-inner {
+      max-width: var(--mw);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(201,138,0,0.14);
+      border: 1px solid rgba(201,138,0,0.28);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-pill::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .hero-trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-trust-badge svg { color: #7FCF9E; flex-shrink: 0; }
+
+    .hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+      max-width: 14ch;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 46ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-stats {
+      margin-top: 4.5rem;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .hero-stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.2rem;
+    }
+    .hero-stat-num {
+      font-family: var(--ff-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .hero-stat-num span { color: var(--gold); font-size: 1.2rem; }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: var(--forest);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .trust-item svg { color: #7FCF9E; flex-shrink: 0; }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-bg { background: var(--ivory-dark); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .step-card {
+      background: var(--white);
+      border-radius: var(--r);
+      padding: 2rem;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .step-icon {
+      width: 46px; height: 46px;
+      border-radius: var(--r-sm);
+      background: var(--gold-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .step-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+    .step-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ===== SUBJECTS ===== */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .subject-card {
+      border-radius: var(--r);
+      padding: 2rem;
+      border: 1.5px solid transparent;
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+    }
+    .subject-card.live {
+      background: var(--midnight);
+      border-color: rgba(201,138,0,0.25);
+      cursor: pointer;
+    }
+    .subject-card.live:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+    }
+    .subject-card.soon {
+      background: var(--ivory-dark);
+      border-color: rgba(0,0,0,0.07);
+      opacity: 0.65;
+    }
+
+    .sbadge {
+      display: inline-flex;
+      padding: 0.28rem 0.65rem;
+      border-radius: 100px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .sbadge-live {
+      background: rgba(201,138,0,0.14);
+      color: var(--gold);
+      border: 1px solid rgba(201,138,0,0.28);
+    }
+    .sbadge-soon { background: rgba(0,0,0,0.07); color: var(--muted); }
+
+    .subject-emoji { font-size: 2.25rem; margin-bottom: 0.9rem; display: block; }
+    .subject-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .subject-card.live h3 { color: var(--white); }
+    .subject-card.soon h3 { color: var(--text); }
+    .subject-card.live .subject-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 1.5rem; }
+    .subject-card.soon .subject-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .subject-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--gold);
+      transition: gap 0.15s;
+    }
+    .subject-link:hover { gap: 0.55rem; }
+
+    /* ===== SAFETY ===== */
+    .safety-bg { background: var(--midnight); }
+
+    .safety-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+    .safety-points { display: flex; flex-direction: column; gap: 1.75rem; }
+    .safety-point { display: flex; gap: 1rem; align-items: flex-start; }
+    .safety-icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(201,138,0,0.14);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .safety-point-title { font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+    .safety-point-body { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    .safety-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--r);
+      padding: 2rem;
+    }
+    .safety-card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 1.5rem;
+    }
+    .vetting-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+    .vetting-num {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 28px;
+    }
+    .vetting-title { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+    .vetting-sub { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 0.1rem; }
+    .vetting-check { margin-left: auto; color: #7FCF9E; flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .safety-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ===== PRICING ===== */
+    .pricing-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      max-width: 100%;
+    }
+    @media (max-width: 560px) {
+      .pricing-row { grid-template-columns: 1fr; }
+    }
+    .price-card {
+      background: var(--white);
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1.5px solid rgba(0,0,0,0.07);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .price-card.featured { border-color: var(--gold); }
+    .price-card-header {
+      padding: 1.75rem 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .price-card-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.04) 18px,
+        rgba(255,255,255,0.04) 20px
+      );
+    }
+    .price-card-header.hdr-starter {
+      background: linear-gradient(135deg, var(--midnight-2) 0%, var(--midnight) 100%);
+    }
+    .price-card-header.hdr-standard {
+      background: linear-gradient(135deg, #7A5200 0%, var(--midnight) 100%);
+    }
+    .price-card-header.hdr-group-1 {
+      background: linear-gradient(135deg, var(--forest) 0%, #0D2B1E 100%);
+    }
+    .price-card-header.hdr-group-2 {
+      background: linear-gradient(135deg, #8B2A0E 0%, var(--midnight) 100%);
+    }
+    .price-card-type {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.3rem;
+      position: relative; z-index: 1;
+    }
+    .price-card-name {
+      font-family: var(--ff-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--white);
+      position: relative; z-index: 1;
+    }
+    .price-card-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--gold);
+      color: var(--midnight);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.65rem;
+      border-radius: 100px;
+      z-index: 2;
+    }
+    .price-card-body { padding: 1.5rem 1.75rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .price-freq {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .price-freq svg { flex-shrink: 0; }
+    .price-num {
+      font-family: var(--ff-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .price-cadence { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .price-features { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.5rem; flex: 1; }
+    .price-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+    .price-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .price-cta { display: block; width: 100%; text-align: center; }
+    .price-note { margin-top: 1.25rem; font-size: 0.82rem; color: var(--muted); }
+
+    /* Currency toggle */
+    .currency-toggle {
+      display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .cur-btn {
+      padding: 0.4rem 1rem; border-radius: 2rem; border: 1.5px solid var(--gold);
+      background: transparent; color: var(--navy); font-size: 0.85rem;
+      font-family: var(--font-body); font-weight: 600; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .cur-btn:hover { background: var(--gold); color: #fff; }
+    .cur-btn.active { background: var(--gold); color: #fff; }
+
+    /* ===== FORM ===== */
+    .form-bg { background: var(--ivory-dark); }
+
+    .form-box {
+      max-width: 620px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.75rem;
+      box-shadow: 0 4px 48px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.06);
+      margin-top: 3rem;
+    }
+
+    /* Progress bar */
+    .form-prog {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 2.5rem;
+    }
+    .prog-seg {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--ivory-dark);
+      transition: background 0.3s;
+    }
+    .prog-seg.active { background: var(--gold); }
+    .prog-seg.done   { background: var(--forest); }
+
+    /* Steps */
+    .fstep { display: none; }
+    .fstep.active { display: block; }
+
+    .fstep-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .fstep-title {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.75rem;
+      line-height: 1.2;
+    }
+
+    /* Choice buttons */
+    .choice-grid { display: grid; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .choice-grid-2 { grid-template-columns: 1fr 1fr; }
+    .choice-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .choice-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .choice-grid-1 { grid-template-columns: 1fr; }
+
+    .choice-btn {
+      padding: 1.1rem;
+      border: 2px solid var(--ivory-dark);
+      border-radius: var(--r);
+      background: var(--ivory);
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .choice-btn:hover { border-color: var(--gold); background: var(--gold-pale); }
+    .choice-btn.sel  { border-color: var(--gold); background: var(--gold-pale); }
+
+    .c-emoji { font-size: 1.6rem; margin-bottom: 0.4rem; display: block; }
+    .c-label { font-weight: 600; font-size: 0.92rem; color: var(--text); }
+    .c-sub   { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* Compact choice (single line) */
+    .choice-btn.compact {
+      padding: 0.8rem 1rem;
+    }
+
+    /* Day picker */
+    .day-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+    .day-btn {
+      padding: 0.55rem 0;
+      border: 1.5px solid var(--ivory-dark);
+      border-radius: var(--r-sm);
+      background: var(--ivory);
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+    .day-btn:hover, .day-btn.sel {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+      color: var(--text);
+    }
+
+    /* Form fields */
+    .fg { margin-bottom: 1.1rem; }
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .flabel {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+    .finput, .fselect, .ftextarea {
+      width: 100%;
+      padding: 0.7rem 0.95rem;
+      border: 1.5px solid var(--ivory-dark);
+      border-radius: var(--r-sm);
+      background: var(--ivory);
+      font-family: var(--ff-body);
+      font-size: 0.92rem;
+      color: var(--text);
+      transition: border-color 0.15s, background 0.15s;
+      outline: none;
+    }
+    .finput:focus, .fselect:focus, .ftextarea:focus {
+      border-color: var(--gold);
+      background: var(--white);
+    }
+    .ftextarea { min-height: 90px; resize: vertical; }
+
+    /* Form nav */
+    .fnav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    .btn-back {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      transition: color 0.15s;
+    }
+    .btn-back:hover { color: var(--text); }
+
+    /* Success */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 0 1rem;
+    }
+    .success-ring {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(26,71,49,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .success-ring svg { color: var(--forest); }
+    .success-title {
+      font-family: var(--ff-display);
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .success-body { font-size: 0.95rem; color: var(--muted); max-width: 36ch; margin: 0 auto; line-height: 1.7; }
+
+    @media (max-width: 500px) {
+      .fg-row { grid-template-columns: 1fr; }
+      .choice-grid-2 { grid-template-columns: 1fr; }
+      .choice-grid-3 { grid-template-columns: 1fr 1fr; }
+      .choice-grid-4 { grid-template-columns: 1fr 1fr; }
+      .form-box { padding: 1.75rem; }
+    }
+
+    /* ===== TUTOR CTA ===== */
+    .tutor-cta {
+      background: var(--midnight);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .tutor-cta h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+    .tutor-cta p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      max-width: 44ch;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--midnight);
+      padding: 3rem 2rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-grid {
+      max-width: var(--mw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 2.5rem 4rem;
+      align-items: start;
+    }
+    .footer-logo {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      white-space: nowrap;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-col-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 0.75rem;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: var(--mw);
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { color: rgba(255,255,255,0.2); font-size: 0.78rem; }
+    .footer-trust {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-trust-item {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+    }
+    @media (max-width: 640px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ===== TIME SLOTS ===== */
+    .timeslot-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+    .slot-btn {
+      padding: 0.5rem 0.25rem;
+      border-radius: var(--r-sm);
+      border: 1.5px solid rgba(14,22,35,0.15);
+      background: var(--white);
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .slot-btn:hover:not(.slot-unavail) { border-color: var(--gold); color: var(--gold); }
+    .slot-btn.sel { background: var(--gold); border-color: var(--gold); color: var(--midnight); }
+    .slot-btn.slot-unavail { opacity: 0.35; cursor: not-allowed; color: var(--muted); }
+    @media (max-width: 500px) { .timeslot-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ===== POLICY MODALS ===== */
+    .policy-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.65);
+      padding: 2rem 1rem;
+      overflow-y: auto;
+      backdrop-filter: blur(4px);
+    }
+    .policy-modal.open { display: flex; align-items: flex-start; justify-content: center; }
+    .policy-modal-inner {
+      background: var(--white);
+      border-radius: var(--r);
+      padding: 3rem 3.5rem;
+      max-width: 740px;
+      width: 100%;
+      position: relative;
+      margin: auto;
+    }
+    .policy-modal-close {
+      position: absolute;
+      top: 1.25rem; right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--muted);
+      line-height: 1;
+      transition: color 0.15s;
+    }
+    .policy-modal-close:hover { color: var(--text); }
+    .policy-modal-title {
+      font-family: var(--ff-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+    .policy-modal-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .policy-modal-body { color: var(--text); line-height: 1.8; }
+    .policy-modal-body h3 {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 2rem 0 0.5rem;
+      color: var(--text);
+    }
+    .policy-modal-body p { margin-bottom: 0.85rem; font-size: 0.9rem; }
+    .policy-modal-body ul { margin: 0.4rem 0 0.85rem 1.25rem; font-size: 0.9rem; }
+    .policy-modal-body ul li { margin-bottom: 0.35rem; }
+    .policy-modal-body strong { font-weight: 600; }
+    @media (max-width: 640px) {
+      .policy-modal-inner { padding: 2rem 1.5rem; }
+    }
+
+    /* ===== WAITLIST BANNER ===== */
+    .waitlist-section {
+      background: var(--midnight);
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+    .waitlist-banner-inner { max-width: 600px; margin: 0 auto; }
+    .waitlist-banner-inner h2 {
+      font-family: var(--ff-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700; color: var(--ivory);
+      line-height: 1.15; letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== WAITLIST MODAL ===== */
+    .wl-overlay {
+      position: fixed; inset: 0;
+      background: rgba(10,14,22,0.75);
+      backdrop-filter: blur(4px);
+      z-index: 900;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .wl-overlay.open { opacity: 1; pointer-events: all; }
+    .wl-drawer {
+      position: fixed; top: 0; right: 0;
+      width: 100%; max-width: 480px; height: 100%;
+      background: var(--midnight);
+      border-left: 1px solid rgba(255,255,255,0.08);
+      z-index: 901;
+      padding: 2.5rem 2rem;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .wl-drawer.open { transform: translateX(0); }
+    .wl-drawer-head {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 2rem;
+    }
+    .wl-drawer-head h3 {
+      font-family: var(--ff-display);
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--ivory); line-height: 1.2;
+    }
+    .wl-drawer-head p { font-size: 0.88rem; color: rgba(248,244,237,0.45); margin-top: 0.4rem; }
+    .wl-close {
+      background: rgba(255,255,255,0.07);
+      border: none; color: rgba(248,244,237,0.6);
+      width: 36px; height: 36px; border-radius: 50%;
+      font-size: 18px; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s; margin-left: 1rem; margin-top: 2px;
+    }
+    .wl-close:hover { background: rgba(255,255,255,0.14); color: var(--ivory); }
+    .wl-fg { margin-bottom: 1rem; }
+    .wl-fg label {
+      display: block; font-size: 0.75rem; font-weight: 600;
+      color: rgba(248,244,237,0.45); letter-spacing: 0.06em;
+      text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .wl-fg .req { color: var(--gold); }
+    .wl-input {
+      width: 100%; background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: var(--r-sm); padding: 0.72rem 0.9rem;
+      font-family: var(--ff-body); font-size: 0.92rem; color: var(--ivory);
+      outline: none; transition: border-color 0.15s, background 0.15s;
+    }
+    .wl-input::placeholder { color: rgba(248,244,237,0.25); }
+    .wl-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.09); }
+    .wl-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .wl-submit {
+      width: 100%; margin-top: 0.5rem;
+      background: var(--gold); color: var(--midnight);
+      font-family: var(--ff-body); font-size: 0.95rem; font-weight: 700;
+      padding: 0.85rem; border: none; border-radius: var(--r-sm);
+      cursor: pointer; transition: background 0.15s, transform 0.12s;
+    }
+    .wl-submit:hover { background: var(--gold-bright); }
+    .wl-submit:active { transform: scale(0.98); }
+    .wl-success { display: none; text-align: center; padding: 3rem 1rem; }
+    .wl-success .wl-check {
+      width: 56px; height: 56px;
+      background: rgba(201,138,0,0.15); border: 1.5px solid var(--gold);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 1.25rem; font-size: 24px;
+      color: var(--gold);
+    }
+    .wl-success h4 { font-family: var(--ff-display); font-size: 1.4rem; color: var(--ivory); margin-bottom: 0.6rem; }
+    .wl-success p { font-size: 0.9rem; color: rgba(248,244,237,0.5); line-height: 1.7; }
+    @media (max-width: 520px) {
+      .wl-drawer { max-width: 100%; border-left: none; }
+      .wl-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
+
+<!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-bars">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <span class="logo-text">ZIDI</span>
+  </a>
+  <div class="nav-links">
+    <a href="#subjects">Subjects</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#enrol">Get started</a>
+    <div class="nav-dropdown-wrap">
+      <button class="nav-dropdown-trigger">Policies ▾</button>
+      <div class="nav-dropdown-menu">
+        <a href="#" onclick="openPolicy('privacy');return false;">Privacy Policy</a>
+        <a href="#" onclick="openPolicy('terms');return false;">Terms &amp; Conditions</a>
+        <a href="#" onclick="openPolicy('fairplay');return false;">Fair Play Policy</a>
+        <a href="#" onclick="openPolicy('refund');return false;">Refund Policy</a>
+        <a href="#" onclick="openPolicy('childsafety');return false;">Child Safety Policy</a>
+        <a href="#" onclick="openPolicy('faq');return false;">Parents FAQ</a>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;gap:0.75rem;align-items:center;">
+    <a href="#enrol" class="btn btn-gold">Find a tutor</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-stripe" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <h1>Expert tutors for Yoruba, Igbo, <em>and more.</em></h1>
+
+    <p class="hero-sub">
+      One-on-one online sessions. Fill the form and we'll match you with the right tutor within 24 hours.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#subjects" class="btn btn-gold btn-lg">Browse subjects</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ═══════════════════════════════ SUBJECTS ═══════════════════════════════ -->
+<section class="section-pad" id="subjects">
+  <div class="container">
+    <span class="eyebrow">What you can learn</span>
+    <h2 class="section-heading">Choose a subject.</h2>
+
+    <div class="subjects-grid">
+
+      <a class="subject-card live" href="#enrol" onclick="preSelectSubject('yoruba')" style="cursor:pointer;text-decoration:none;color:inherit;display:block;">
+        <span class="sbadge sbadge-live">Available now</span>
+        <span class="subject-emoji">🗣️</span>
+        <h3>Yoruba</h3>
+        <p class="subject-desc">One of the most widely spoken languages in Africa, with over 45 million native speakers.</p>
+      </a>
+
+      <a class="subject-card live" href="#enrol" onclick="preSelectSubject('igbo')" style="cursor:pointer;text-decoration:none;color:inherit;display:block;">
+        <span class="sbadge sbadge-live">Available now</span>
+        <span class="subject-emoji">💬</span>
+        <h3>Igbo</h3>
+        <p class="subject-desc">One of Nigeria's major languages, with speakers across Southeast Nigeria.</p>
+      </a>
+
+      <div class="subject-card soon">
+        <span class="sbadge sbadge-soon">More coming soon</span>
+        <span class="subject-emoji">🌍</span>
+        <h3>More subjects</h3>
+        <p class="subject-desc">Chess, Piano, African Dishes, Hausa, French, and more.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════════════════════════ WAITLIST ═══════════════════════════════ -->
+<section class="waitlist-section" id="waitlist">
+  <div class="waitlist-banner-inner">
+    <h2>Want to learn a different language? Join our waitlist.</h2>
+    <button class="btn btn-outline" onclick="openWaitlist()">Join the Waitlist →</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ WAITLIST DRAWER ═══════════════════════════════ -->
+<div class="wl-overlay" id="wlOverlay" onclick="closeWaitlist()"></div>
+<div class="wl-drawer" id="wlDrawer">
+  <div class="wl-drawer-head">
+    <div>
+      <h3>Join the Waitlist</h3>
+      <p>We'll reach out as soon as your language is available.</p>
+    </div>
+    <button class="wl-close" onclick="closeWaitlist()">✕</button>
+  </div>
+
+  <div id="wl-form-content">
+    <form id="wl-form" action="https://formspree.io/f/mjgneead" method="POST">
+      <div class="wl-row">
+        <div class="wl-fg">
+          <label>First Name <span class="req">*</span></label>
+          <input class="wl-input" type="text" name="first_name" placeholder="e.g. Ama" required>
+        </div>
+        <div class="wl-fg">
+          <label>Last Name <span class="req">*</span></label>
+          <input class="wl-input" type="text" name="last_name" placeholder="e.g. Mensah" required>
+        </div>
+      </div>
+      <div class="wl-fg">
+        <label>Email Address <span class="req">*</span></label>
+        <input class="wl-input" type="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="wl-fg">
+        <label>WhatsApp Number</label>
+        <input class="wl-input" type="tel" name="whatsapp" placeholder="+234 800 000 0000">
+      </div>
+      <div class="wl-fg">
+        <label>Which language(s) are you waiting for? <span class="req">*</span></label>
+        <input class="wl-input" type="text" name="language" placeholder="e.g. Hausa, Twi, Swahili…" required>
+      </div>
+      <div class="wl-fg">
+        <label>Who are the classes for? <span class="req">*</span></label>
+        <select class="wl-input" name="learner_type" required>
+          <option value="" disabled selected>Select an option</option>
+          <option>My child / children</option>
+          <option>Myself (adult)</option>
+          <option>Both</option>
+        </select>
+      </div>
+      <button type="submit" class="wl-submit">Join the Waitlist</button>
+    </form>
+  </div>
+
+  <div class="wl-success" id="wl-success">
+    <div class="wl-check">✓</div>
+    <h4>You're on the list!</h4>
+    <p>We'll message you as soon as your language is available.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════ PRICING ═══════════════════════════════ -->
+<section class="section-pad" id="pricing">
+  <div class="container">
+    <span class="eyebrow">Pricing</span>
+    <p class="section-body">One flat monthly rate covers your sessions, tutor matching, scheduling, and ongoing support. Cancel anytime.</p>
+
+    <div class="currency-toggle" id="currencyToggle">
+      <button class="cur-btn active" data-cur="NGN" onclick="setCurrency('NGN',this)">₦ NGN</button>
+      <button class="cur-btn" data-cur="USD" onclick="setCurrency('USD',this)">$ USD</button>
+      <button class="cur-btn" data-cur="GBP" onclick="setCurrency('GBP',this)">£ GBP</button>
+      <button class="cur-btn" data-cur="CAD" onclick="setCurrency('CAD',this)">$ CAD</button>
+    </div>
+
+    <div class="pricing-row">
+
+      <!-- Private · Once -->
+      <div class="price-card">
+        <div class="price-card-header hdr-starter">
+          <div class="price-card-type">Private Classes · Online</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-freq">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Once per week
+          </div>
+          <div class="price-num" data-ngn="36000">₦36,000</div>
+          <div class="price-cadence">total per month</div>
+          <ul class="price-features">
+            <li>4 sessions/month</li>
+          </ul>
+          <a href="#enrol" class="btn btn-dark price-cta">Get Started →</a>
+        </div>
+      </div>
+
+      <!-- Private · Twice -->
+      <div class="price-card featured">
+        <div class="price-card-header hdr-standard">
+          <div class="price-card-type">Private Classes · Online</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-freq">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Twice per week
+          </div>
+          <div class="price-num" data-ngn="55000">₦55,000</div>
+          <div class="price-cadence">total per month</div>
+          <ul class="price-features">
+            <li>8 sessions/month</li>
+          </ul>
+          <a href="#enrol" class="btn btn-gold price-cta">Get Started →</a>
+        </div>
+      </div>
+
+      <!-- Group · Once -->
+      <div class="price-card">
+        <div class="price-card-header hdr-group-1">
+          <div class="price-card-type">Group Classes · Online</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-freq">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Once per week
+          </div>
+          <div class="price-num" data-ngn="25000">₦25,000</div>
+          <div class="price-cadence">per person, per month</div>
+          <ul class="price-features">
+            <li>4 group sessions/month</li>
+          </ul>
+          <a href="#enrol" class="btn btn-dark price-cta">Get Started →</a>
+        </div>
+      </div>
+
+      <!-- Group · Twice -->
+      <div class="price-card">
+        <div class="price-card-header hdr-group-2">
+          <div class="price-card-type">Group Classes · Online</div>
+        </div>
+        <div class="price-card-body">
+          <div class="price-freq">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Twice per week
+          </div>
+          <div class="price-num" data-ngn="40000">₦40,000</div>
+          <div class="price-cadence">per person, per month</div>
+          <ul class="price-features">
+            <li>8 group sessions/month</li>
+          </ul>
+          <a href="#enrol" class="btn btn-dark price-cta">Get Started →</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="price-note">Invoiced monthly, prepaid. Payment accepted in NGN, GBP, CAD, and USD.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ FORM ═══════════════════════════════ -->
+<section class="section-pad form-bg" id="enrol">
+  <div class="container">
+    <span class="eyebrow">Enroll</span>
+    <h2 class="section-heading">Ready? Let's get started.</h2>
+    <p class="section-body">Fill in the details below and we'll be in touch.</p>
+
+    <div class="form-box">
+
+      <!-- Progress segments -->
+      <div class="form-prog" id="formProg">
+        <div class="prog-seg active" id="seg1"></div>
+        <div class="prog-seg" id="seg2"></div>
+        <div class="prog-seg" id="seg3"></div>
+        <div class="prog-seg" id="seg4"></div>
+        <div class="prog-seg" id="seg5"></div>
+      </div>
+
+      <!-- STEP 1 — Who -->
+      <div class="fstep active" id="fstep1">
+        <div class="fstep-label">Step 1 of 5</div>
+        <div class="fstep-title">Who is this for?</div>
+        <div class="choice-grid choice-grid-2" id="cg-learnerType">
+          <button class="choice-btn" data-val="child" onclick="pick('learnerType','child',this,'cg-learnerType')">
+            <span class="c-emoji">👧🏾</span>
+            <span class="c-label">My child</span>
+            <span class="c-sub">I'm a parent booking for my son or daughter</span>
+          </button>
+          <button class="choice-btn" data-val="adult" onclick="pick('learnerType','adult',this,'cg-learnerType')">
+            <span class="c-emoji">🧑🏾‍💼</span>
+            <span class="c-label">Myself</span>
+            <span class="c-sub">I'm the one learning</span>
+          </button>
+        </div>
+        <div class="fnav">
+          <span></span>
+          <button class="btn btn-gold" onclick="go(1,2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 — Subject + level -->
+      <div class="fstep" id="fstep2">
+        <div class="fstep-label">Step 2 of 5</div>
+        <div class="fstep-title">What would you like to learn?</div>
+
+        <div class="fg">
+          <label class="flabel">Subject</label>
+          <div class="choice-grid choice-grid-2" id="cg-subject">
+            <button class="choice-btn" data-val="yoruba" onclick="pick('subject','yoruba',this,'cg-subject')">
+              <span class="c-emoji" style="font-size:1.3rem;">🗣️</span>
+              <span class="c-label">Yoruba</span>
+            </button>
+            <button class="choice-btn" data-val="igbo" onclick="pick('subject','igbo',this,'cg-subject')">
+              <span class="c-emoji" style="font-size:1.3rem;">💬</span>
+              <span class="c-label">Igbo</span>
+            </button>
+            <button class="choice-btn" data-val="other" onclick="pick('subject','other',this,'cg-subject');toggleOther()" style="grid-column:1/-1;">
+              <span class="c-label">Something else</span>
+              <span class="c-sub">Chess, music, cooking, another language…</span>
+            </button>
+          </div>
+          <div id="otherField" style="display:none; margin-top:0.5rem;">
+            <input class="finput" id="subjectOther" placeholder="What would you like to learn?" />
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="flabel">Current level</label>
+          <div class="choice-grid choice-grid-1" id="cg-level">
+            <button class="choice-btn compact" data-val="beginner" onclick="pick('level','beginner',this,'cg-level')">
+              <span class="c-label">Complete beginner</span>
+              <span class="c-sub" style="display:block;">No experience at all</span>
+            </button>
+            <button class="choice-btn compact" data-val="some" onclick="pick('level','some',this,'cg-level')">
+              <span class="c-label">Some exposure</span>
+              <span class="c-sub" style="display:block;">I know a few words or phrases</span>
+            </button>
+            <button class="choice-btn compact" data-val="conversational" onclick="pick('level','conversational',this,'cg-level')">
+              <span class="c-label">Conversational</span>
+              <span class="c-sub" style="display:block;">I can hold a basic conversation</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="flabel">Session type</label>
+          <select class="finput" id="sessionType" onchange="onSessionTypeChange(this.value)">
+            <option value="" disabled selected>Select a plan…</option>
+            <option value="private-once">Private · Once per week</option>
+            <option value="private-twice">Private · Twice per week</option>
+            <option value="group-once">Group · Once per week</option>
+            <option value="group-twice">Group · Twice per week</option>
+          </select>
+        </div>
+
+        <!-- Group fields — shown only when group session selected -->
+        <div class="fg" id="group-size-wrap" style="display:none;">
+          <label class="flabel">How many people in your group?</label>
+          <div class="choice-grid choice-grid-3" id="cg-groupsize">
+            <button class="choice-btn compact" data-val="2" onclick="pick('groupSize','2',this,'cg-groupsize');renderGroupNames(2)" style="text-align:center;">2</button>
+            <button class="choice-btn compact" data-val="3" onclick="pick('groupSize','3',this,'cg-groupsize');renderGroupNames(3)" style="text-align:center;">3</button>
+            <button class="choice-btn compact" data-val="4" onclick="pick('groupSize','4',this,'cg-groupsize');renderGroupNames(4)" style="text-align:center;">4</button>
+          </div>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.4rem;">Groups are 2–4 people who all know each other. Pricing is per person.</p>
+        </div>
+
+        <div id="group-names-wrap" style="display:none;"></div>
+
+        <div class="fnav">
+          <button class="btn-back" onclick="go(2,1)">← Back</button>
+          <button class="btn btn-gold" onclick="go(2,3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 — Learner details -->
+      <div class="fstep" id="fstep3">
+        <div class="fstep-label">Step 3 of 5</div>
+        <div class="fstep-title" id="step3title">About your child</div>
+
+        <div class="fg" id="learnerNameWrap">
+          <label class="flabel" id="learnerNameLabel">Child's first name</label>
+          <input class="finput" id="learnerName" placeholder="First name only" />
+        </div>
+
+        <div class="fg" id="learnerAgeWrap">
+          <label class="flabel">Age</label>
+          <div class="choice-grid choice-grid-3" id="cg-age-child">
+            <button class="choice-btn compact" data-val="5-8"   onclick="pick('age','5-8',this,'cg-age-child')" style="text-align:center;">5–8</button>
+            <button class="choice-btn compact" data-val="9-12"  onclick="pick('age','9-12',this,'cg-age-child')" style="text-align:center;">9–12</button>
+            <button class="choice-btn compact" data-val="13-17" onclick="pick('age','13-17',this,'cg-age-child')" style="text-align:center;">13–17</button>
+          </div>
+          <div class="choice-grid choice-grid-4" id="cg-age-adult" style="display:none;">
+            <button class="choice-btn compact" data-val="18-25" onclick="pick('age','18-25',this,'cg-age-adult')" style="text-align:center;">18–25</button>
+            <button class="choice-btn compact" data-val="26-33" onclick="pick('age','26-33',this,'cg-age-adult')" style="text-align:center;">26–33</button>
+            <button class="choice-btn compact" data-val="34-40" onclick="pick('age','34-40',this,'cg-age-adult')" style="text-align:center;">34–40</button>
+            <button class="choice-btn compact" data-val="40+"   onclick="pick('age','40+',this,'cg-age-adult')" style="text-align:center;">40+</button>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="flabel">
+            What's the goal?
+            <span style="font-weight:400; color:var(--muted)"> (optional)</span>
+          </label>
+          <textarea class="ftextarea" id="goal" placeholder="e.g. I want my daughter to speak Yoruba with her grandparents by Christmas…"></textarea>
+        </div>
+
+        <div class="fnav">
+          <button class="btn-back" onclick="go(3,2)">← Back</button>
+          <button class="btn btn-gold" onclick="go(3,4)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4 — Availability -->
+      <div class="fstep" id="fstep4">
+        <div class="fstep-label">Step 4 of 5</div>
+        <div class="fstep-title">When are you free?</div>
+
+        <div class="fg">
+          <label class="flabel">Best days for sessions <span style="font-weight:400;color:var(--muted)">(select all that work)</span></label>
+          <div class="day-row">
+            <button class="day-btn" onclick="toggleDay(this)">Mon</button>
+            <button class="day-btn" onclick="toggleDay(this)">Tue</button>
+            <button class="day-btn" onclick="toggleDay(this)">Wed</button>
+            <button class="day-btn" onclick="toggleDay(this)">Thu</button>
+            <button class="day-btn" onclick="toggleDay(this)">Fri</button>
+            <button class="day-btn" onclick="toggleDay(this)">Sat</button>
+            <button class="day-btn" onclick="toggleDay(this)">Sun</button>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="flabel">Your timezone</label>
+          <select class="fselect" id="timezone" onchange="renderTimeSlots()">
+            <option value="">Select your timezone</option>
+            <option value="0">GMT / London (UK) — UTC+0</option>
+            <option value="1">BST / London Summer (UK) — UTC+1</option>
+            <option value="-5">Eastern Time — ET (US/Canada) — UTC−5</option>
+            <option value="-6">Central Time — CT (US/Canada) — UTC−6</option>
+            <option value="-7">Mountain Time — MT (US/Canada) — UTC−7</option>
+            <option value="-8">Pacific Time — PT (US/Canada) — UTC−8</option>
+            <option value="1">West Africa Time — WAT (Nigeria) — UTC+1</option>
+            <option value="1">Central European Time — CET — UTC+1</option>
+          </select>
+        </div>
+
+        <div class="fg" id="timeslot-wrap" style="display:none;">
+          <label class="flabel">Preferred time <span style="font-weight:400;color:var(--muted)">(select all that work)</span></label>
+          <p class="timeslot-note" id="timeslot-note" style="font-size:0.8rem;color:var(--muted);margin-bottom:0.75rem;"></p>
+          <div class="timeslot-grid" id="timeslot-grid"></div>
+        </div>
+
+        <div class="fnav">
+          <button class="btn-back" onclick="go(4,3)">← Back</button>
+          <button class="btn btn-gold" onclick="go(4,5)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5 — Contact -->
+      <div class="fstep" id="fstep5">
+        <div class="fstep-label">Step 5 of 5</div>
+        <div class="fstep-title" id="step5title">How do we reach you?</div>
+
+        <div class="fg">
+          <label class="flabel" id="contactNameLabel">Your full name</label>
+          <input class="finput" id="parentName" placeholder="Your full name" />
+        </div>
+
+        <div class="fg-row fg">
+          <div>
+            <label class="flabel">Email address</label>
+            <input class="finput" id="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label class="flabel">WhatsApp number</label>
+            <input class="finput" id="whatsapp" type="tel" placeholder="+44 7700 000000" />
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="flabel">
+            How did you hear about Learn with Zidi?
+            <span style="font-weight:400;color:var(--muted)"> (optional)</span>
+          </label>
+          <select class="fselect" id="referral">
+            <option value="">Select one</option>
+            <option>A friend or family member</option>
+            <option>WhatsApp group</option>
+            <option>Instagram or Facebook</option>
+            <option>Google search</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="fnav">
+          <button class="btn-back" onclick="go(5,4)">← Back</button>
+          <button class="btn btn-gold btn-lg" onclick="submitForm()">Submit →</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-ring">
+          <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="success-title">Form submitted. We will be in touch.</div>
+        <p class="success-body">
+          We'll review your details and reach out via email or WhatsApp to confirm next steps.
+        </p>
+      </div>
+
+    </div><!-- /form-box -->
+  </div>
+</section>
+
+
+<!-- TUTOR CTA REMOVED -->
+<section style="display:none" id="tutor-cta">
+  <div class="container">
+    <h2>Are you a tutor or coach?</h2>
+    <p>
+      We're looking for passionate, reliable teachers — Yoruba, Igbo, chess, music, cooking, and more.
+      Earn on your own schedule, from anywhere in the world.
+    </p>
+
+    <div class="form-box" style="text-align:left; margin: 2.5rem auto 0;">
+
+      <div class="form-prog" id="tformProg">
+        <div class="prog-seg active" id="tseg1"></div>
+        <div class="prog-seg" id="tseg2"></div>
+        <div class="prog-seg" id="tseg3"></div>
+        <div class="prog-seg" id="tseg4"></div>
+        <div class="prog-seg" id="tseg5"></div>
+      </div>
+
+      <!-- T-STEP 1: What do you teach? -->
+      <div class="fstep active" id="tfstep1">
+        <div class="fstep-label">Step 1 of 5</div>
+        <div class="fstep-title">What do you teach?</div>
+        <div class="choice-grid choice-grid-2" id="tcg-subject">
+          <button class="choice-btn" data-val="yoruba" onclick="Tpick('subject','yoruba',this,'tcg-subject')">
+            <span class="c-emoji" style="font-size:1.3rem;">🗣️</span>
+            <span class="c-label">Yoruba</span>
+          </button>
+          <button class="choice-btn" data-val="igbo" onclick="Tpick('subject','igbo',this,'tcg-subject')">
+            <span class="c-emoji" style="font-size:1.3rem;">💬</span>
+            <span class="c-label">Igbo</span>
+          </button>
+          <button class="choice-btn" data-val="other" onclick="Tpick('subject','other',this,'tcg-subject');TtoggleOther()" style="grid-column:1/-1;">
+            <span class="c-label">Something else</span>
+            <span class="c-sub">Chess, music, cooking, another language…</span>
+          </button>
+        </div>
+        <div id="totherField" style="display:none; margin-top:0.5rem; margin-bottom:1.5rem;">
+          <input class="finput" id="tsubjectOther" placeholder="What do you teach?" />
+        </div>
+        <div class="fnav"><span></span><button class="btn btn-gold" onclick="Tgo(1,2)">Continue →</button></div>
+      </div>
+
+      <!-- T-STEP 2: Experience -->
+      <div class="fstep" id="tfstep2">
+        <div class="fstep-label">Step 2 of 5</div>
+        <div class="fstep-title">Your teaching experience</div>
+        <div class="fg">
+          <label class="flabel">How long have you been teaching?</label>
+          <div class="choice-grid choice-grid-1" id="tcg-experience">
+            <button class="choice-btn compact" data-val="new" onclick="Tpick('experience','new',this,'tcg-experience')">
+              <span class="c-label">Just starting out</span>
+              <span class="c-sub" style="display:block;">Less than 1 year of formal teaching</span>
+            </button>
+            <button class="choice-btn compact" data-val="some" onclick="Tpick('experience','some',this,'tcg-experience')">
+              <span class="c-label">1–3 years</span>
+              <span class="c-sub" style="display:block;">Some experience teaching formally or informally</span>
+            </button>
+            <button class="choice-btn compact" data-val="experienced" onclick="Tpick('experience','experienced',this,'tcg-experience')">
+              <span class="c-label">3+ years</span>
+              <span class="c-sub" style="display:block;">Experienced teacher or native speaker coach</span>
+            </button>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Tell us about yourself <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+          <textarea class="ftextarea" id="tbio" placeholder="e.g. I'm a native Yoruba speaker from Lagos, I've been tutoring children in the UK for 2 years…"></textarea>
+        </div>
+        <div class="fnav">
+          <button class="btn-back" onclick="Tgo(2,1)">← Back</button>
+          <button class="btn btn-gold" onclick="Tgo(2,3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- T-STEP 3: Who you teach -->
+      <div class="fstep" id="tfstep3">
+        <div class="fstep-label">Step 3 of 5</div>
+        <div class="fstep-title">Who are you comfortable teaching?</div>
+        <div class="fg">
+          <label class="flabel">Age groups <span style="font-weight:400;color:var(--muted)">(select all that apply)</span></label>
+          <div class="day-row" style="grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+            <button class="day-btn" style="padding:0.85rem 0;" onclick="TtoggleAge(this)">Children<br><span style="font-size:0.65rem;">5–12</span></button>
+            <button class="day-btn" style="padding:0.85rem 0;" onclick="TtoggleAge(this)">Teens<br><span style="font-size:0.65rem;">13–17</span></button>
+            <button class="day-btn" style="padding:0.85rem 0;" onclick="TtoggleAge(this)">Adults<br><span style="font-size:0.65rem;">18+</span></button>
+          </div>
+        </div>
+        <div class="fg" style="margin-top:1.25rem;">
+          <label class="flabel">What's your hourly rate expectation? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+          <input class="finput" id="trate" placeholder="e.g. ₦5,000/session or £10/hour" />
+        </div>
+        <div class="fnav">
+          <button class="btn-back" onclick="Tgo(3,2)">← Back</button>
+          <button class="btn btn-gold" onclick="Tgo(3,4)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- T-STEP 4: Availability -->
+      <div class="fstep" id="tfstep4">
+        <div class="fstep-label">Step 4 of 5</div>
+        <div class="fstep-title">When are you available?</div>
+        <div class="fg">
+          <label class="flabel">Available days <span style="font-weight:400;color:var(--muted)">(select all that work)</span></label>
+          <div class="day-row">
+            <button class="day-btn" onclick="TtoggleDay(this)">Mon</button>
+            <button class="day-btn" onclick="TtoggleDay(this)">Tue</button>
+            <button class="day-btn" onclick="TtoggleDay(this)">Wed</button>
+            <button class="day-btn" onclick="TtoggleDay(this)">Thu</button>
+            <button class="day-btn" onclick="TtoggleDay(this)">Fri</button>
+            <button class="day-btn" onclick="TtoggleDay(this)">Sat</button>
+            <button class="day-btn" onclick="TtoggleDay(this)">Sun</button>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Time of day</label>
+          <div class="choice-grid choice-grid-3" id="tcg-time">
+            <button class="choice-btn compact" data-val="morning" onclick="Tpick('time','morning',this,'tcg-time')" style="text-align:center;">
+              <span class="c-label">Morning</span><span class="c-sub" style="display:block;">6am–12pm</span>
+            </button>
+            <button class="choice-btn compact" data-val="afternoon" onclick="Tpick('time','afternoon',this,'tcg-time')" style="text-align:center;">
+              <span class="c-label">Afternoon</span><span class="c-sub" style="display:block;">12pm–5pm</span>
+            </button>
+            <button class="choice-btn compact" data-val="evening" onclick="Tpick('time','evening',this,'tcg-time')" style="text-align:center;">
+              <span class="c-label">Evening</span><span class="c-sub" style="display:block;">5pm–9pm</span>
+            </button>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Your timezone</label>
+          <select class="fselect" id="ttimezone">
+            <option value="">Select your timezone</option>
+            <option>GMT / London (UK)</option>
+            <option>BST / London Summer (UK)</option>
+            <option>Eastern Time — ET (US/Canada)</option>
+            <option>Central Time — CT (US/Canada)</option>
+            <option>Mountain Time — MT (US/Canada)</option>
+            <option>Pacific Time — PT (US/Canada)</option>
+            <option>West Africa Time — WAT (Nigeria)</option>
+            <option>Central European Time — CET</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fnav">
+          <button class="btn-back" onclick="Tgo(4,3)">← Back</button>
+          <button class="btn btn-gold" onclick="Tgo(4,5)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- T-STEP 5: Contact -->
+      <div class="fstep" id="tfstep5">
+        <div class="fstep-label">Step 5 of 5</div>
+        <div class="fstep-title">How do we reach you?</div>
+        <div class="fg">
+          <label class="flabel">Full name</label>
+          <input class="finput" id="tname" placeholder="Your full name" />
+        </div>
+        <div class="fg-row fg">
+          <div>
+            <label class="flabel">Email address</label>
+            <input class="finput" id="temail" type="email" placeholder="you@example.com" />
+          </div>
+          <div>
+            <label class="flabel">WhatsApp number</label>
+            <input class="finput" id="twhatsapp" type="tel" placeholder="+44 7700 000000" />
+          </div>
+        </div>
+        <div class="fg">
+          <label class="flabel">Anything else you'd like us to know? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+          <textarea class="ftextarea" id="tnotes" placeholder="Qualifications, certifications, teaching style, why you want to join…"></textarea>
+        </div>
+        <div class="fnav">
+          <button class="btn-back" onclick="Tgo(5,4)">← Back</button>
+          <button class="btn btn-gold btn-lg" onclick="TsubmitForm()">Apply to teach →</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="form-success" id="tformSuccess">
+        <div class="success-ring">
+          <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="success-title">Application received!</div>
+        <p class="success-body">
+          We'll review your application and be in touch within 48 hours. If you're a good fit, we'll schedule a quick call and ask for a short sample lesson.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-logo">Learn with <span>Zidi</span></div>
+
+    <div>
+      <div class="footer-col-label">Navigate</div>
+      <div class="footer-links">
+        <a href="#subjects">Subjects</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-label">Legal &amp; policies</div>
+      <div class="footer-links">
+        <a href="#" onclick="openPolicy('privacy');return false;">Privacy Policy</a>
+        <a href="#" onclick="openPolicy('terms');return false;">Terms &amp; Conditions</a>
+        <a href="#" onclick="openPolicy('fairplay');return false;">Fair Play Policy</a>
+        <a href="#" onclick="openPolicy('refund');return false;">Refund Policy</a>
+        <a href="#" onclick="openPolicy('childsafety');return false;">Child Safety Policy</a>
+        <a href="#" onclick="openPolicy('faq');return false;">Parents FAQ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Learn with Zidi. All rights reserved.</div>
+    <div class="footer-trust">
+      <span class="footer-trust-item">Vetted tutors</span>
+      <span class="footer-trust-item">Safe online sessions</span>
+      <span class="footer-trust-item">Your timezone, your schedule</span>
+      <span class="footer-trust-item">Native speakers, diaspora-friendly teaching</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════ POLICY MODALS ═══════════════════════════════ -->
+
+<!-- PRIVACY POLICY -->
+<div class="policy-modal" id="modal-privacy">
+  <div class="policy-modal-inner">
+    <button class="policy-modal-close" onclick="closePolicy('privacy')">✕</button>
+    <h2 class="policy-modal-title">Privacy Policy</h2>
+    <p class="policy-modal-date">Last updated: 1 June 2026</p>
+    <div class="policy-modal-body">
+      <p>Learn with Zidi ("we", "us", "our") is committed to protecting your personal data. This policy explains what we collect, why we collect it, and your rights under the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.</p>
+
+      <h3>1. Who We Are</h3>
+      <p>Learn with Zidi is an online tutoring marketplace connecting families in the diaspora with vetted tutors. Our registered business address is available on request by emailing hello@zeedeelearn.com.</p>
+
+      <h3>2. What Personal Data We Collect</h3>
+      <p>We collect the following categories of data:</p>
+      <ul>
+        <li><strong>Enquiry data:</strong> name, email address, WhatsApp number, how you heard about us</li>
+        <li><strong>Learner data:</strong> first name of the child or adult learner, age range, subject of interest, current level, learning goals</li>
+        <li><strong>Tutor applicant data:</strong> full name, email, WhatsApp, subject(s) taught, teaching experience, bio, age groups, rate expectations, availability, timezone, and any notes submitted</li>
+        <li><strong>Communication data:</strong> records of WhatsApp and email correspondence with us</li>
+        <li><strong>Technical data:</strong> IP address and browser type collected automatically when you visit our website (via standard server logs)</li>
+      </ul>
+      <p>We do not collect payment card details directly. Any payments are processed through third-party providers under their own privacy policies.</p>
+
+      <h3>3. How We Use Your Data</h3>
+      <p>We use your personal data for the following purposes:</p>
+      <ul>
+        <li>To match learners with suitable tutors</li>
+        <li>To schedule and coordinate sessions</li>
+        <li>To communicate with you about your enquiry, enrolment, or application</li>
+        <li>To process payments and issue invoices</li>
+        <li>To improve our services and respond to feedback</li>
+        <li>To comply with our legal and safeguarding obligations</li>
+      </ul>
+
+      <h3>4. Our Lawful Basis</h3>
+      <p>We process your data on the following legal bases: <strong>contract</strong> (to deliver the tutoring service you have requested), <strong>legitimate interests</strong> (to operate and improve our business), and <strong>legal obligation</strong> (for safeguarding and compliance purposes). Where we process data about children, we rely on parental consent or the contract with the parent/guardian.</p>
+
+      <h3>5. How Long We Keep Your Data</h3>
+      <p>We retain personal data only as long as necessary. Enquiry data is kept for up to 12 months. Active client and tutor records are kept for the duration of the relationship plus 3 years. Safeguarding records are kept for 10 years in accordance with best practice guidance.</p>
+
+      <h3>6. Who We Share Your Data With</h3>
+      <p>We do not sell your data. We may share your data with:</p>
+      <ul>
+        <li>Matched tutors (limited to first name of learner, subject, level, availability, and timezone)</li>
+        <li>Our technology service providers (e.g. email platforms, form tools) under data processing agreements</li>
+        <li>Regulatory bodies or law enforcement where required by law</li>
+      </ul>
+
+      <h3>7. Your Rights</h3>
+      <p>Under UK GDPR you have the right to: access your data, correct inaccurate data, request erasure, restrict or object to processing, and data portability. To exercise any of these rights, email hello@zeedeelearn.com. We will respond within 30 days.</p>
+
+      <h3>8. Cookies</h3>
+      <p>Our website uses only essential cookies required for it to function. We do not use tracking or advertising cookies.</p>
+
+      <h3>9. Contact</h3>
+      <p>For any privacy-related queries, please contact us at hello@zeedeelearn.com. If you are not satisfied with our response, you have the right to complain to the Information Commissioner's Office (ICO) at ico.org.uk.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS & CONDITIONS -->
+<div class="policy-modal" id="modal-terms">
+  <div class="policy-modal-inner">
+    <button class="policy-modal-close" onclick="closePolicy('terms')">✕</button>
+    <h2 class="policy-modal-title">Terms &amp; Conditions</h2>
+    <p class="policy-modal-date">Last updated: 1 June 2026</p>
+    <div class="policy-modal-body">
+      <p>These Terms &amp; Conditions govern your use of the Learn with Zidi tutoring service. By enquiring, enrolling, or applying as a tutor, you agree to these terms.</p>
+
+      <h3>1. The Service</h3>
+      <p>Learn with Zidi is a matching and coordination service. We connect parents and learners with independent tutors and facilitate scheduling. Tutors are not employees of Learn with Zidi. Sessions are delivered via Zoom or Google Meet. We do not host sessions on our own platform.</p>
+
+      <h3>2. Enrolment</h3>
+      <p>Enrolment is confirmed once we have matched you with a tutor, agreed a session schedule, and received your first monthly payment. Enrolment is personal and non-transferable.</p>
+
+      <h3>3. Fees and Payment</h3>
+      <p>Fees are charged monthly in advance. Current pricing is displayed on our website and subject to change with 30 days' notice. We accept payment in NGN, GBP, CAD, and USD. Invoices are issued at the start of each billing period. Non-payment may result in suspension of sessions.</p>
+
+      <h3>4. Cancellation by the Client</h3>
+      <p>You may cancel at any time by giving 30 days' written notice to hello@zeedeelearn.com. No refund is due for the current billing period unless a refund applies under our Refund Policy. Sessions not taken within a paid period are forfeited unless the missed session is due to tutor unavailability.</p>
+
+      <h3>5. Cancellation by Us</h3>
+      <p>We reserve the right to terminate an enrolment where: payment is overdue by more than 14 days, a client or learner acts in breach of our Fair Play Policy or Child Safety Policy, or continued service is no longer practicable.</p>
+
+      <h3>6. Tutor Matching and Replacement</h3>
+      <p>We make every effort to match you with a suitable tutor based on the information you provide. If you are not happy with your tutor within the first two sessions, contact us and we will rematch you at no additional cost.</p>
+
+      <h3>7. Liability</h3>
+      <p>Learn with Zidi acts as an intermediary and is not liable for the content of individual sessions, the conduct of independent tutors, or technical failures on third-party video platforms (Zoom, Google Meet). Our total liability in any circumstance is limited to the fees paid in the most recent calendar month.</p>
+
+      <h3>8. Intellectual Property</h3>
+      <p>All content on this website — including copy, design, and structure — is the property of Learn with Zidi and may not be reproduced without written consent.</p>
+
+      <h3>9. Governing Law</h3>
+      <p>These Terms are governed by the laws of England and Wales. Any dispute shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+      <h3>10. Changes to These Terms</h3>
+      <p>We may update these Terms at any time. Continued use of the service after notice of changes constitutes acceptance. We will notify active clients of material changes by email.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAIR PLAY POLICY -->
+<div class="policy-modal" id="modal-fairplay">
+  <div class="policy-modal-inner">
+    <button class="policy-modal-close" onclick="closePolicy('fairplay')">✕</button>
+    <h2 class="policy-modal-title">Fair Play Policy</h2>
+    <p class="policy-modal-date">Last updated: 1 June 2026</p>
+    <div class="policy-modal-body">
+      <p>Learn with Zidi is built on respect, trust, and a genuine commitment to learning. This policy sets out the standards we expect from everyone — tutors, learners, and parents alike.</p>
+
+      <h3>For Tutors</h3>
+      <ul>
+        <li>Arrive on time for every session. If you need to cancel, give at least 24 hours' notice and offer a reschedule date.</li>
+        <li>Deliver sessions in a professional, focused, and age-appropriate manner.</li>
+        <li>Maintain appropriate professional boundaries with learners at all times.</li>
+        <li>Do not share learner details, contact information, or session content with third parties.</li>
+        <li>Do not attempt to solicit learners for private arrangements that bypass Learn with Zidi.</li>
+        <li>Disclose any conflict of interest or prior relationship with a learner to us immediately.</li>
+        <li>Complete any requested DBS or background check before sessions begin with learners under 18.</li>
+      </ul>
+
+      <h3>For Parents and Learners</h3>
+      <ul>
+        <li>Attend or arrange for the learner to attend each scheduled session. More than two no-shows without notice may result in session forfeiture for that period.</li>
+        <li>Treat tutors with courtesy and respect. Sessions are a professional engagement.</li>
+        <li>Provide honest and accurate information when enquiring, so we can make the best match.</li>
+        <li>Do not attempt to contact tutors outside the channel we establish for the session, or arrange direct private sessions that bypass Learn with Zidi.</li>
+        <li>Report any concern about a tutor's conduct to hello@zeedeelearn.com promptly.</li>
+      </ul>
+
+      <h3>Zero Tolerance</h3>
+      <p>The following will result in immediate termination of the relationship with no refund:</p>
+      <ul>
+        <li>Any form of harassment, abuse, discrimination, or threatening behaviour toward any party</li>
+        <li>Sharing explicit, offensive, or inappropriate content during sessions</li>
+        <li>Misrepresentation of qualifications or identity</li>
+        <li>Any conduct that puts a child's welfare at risk</li>
+      </ul>
+
+      <h3>Reporting</h3>
+      <p>To report a concern, contact us at hello@zeedeelearn.com. We take all reports seriously and will investigate promptly. Safeguarding concerns are referred to the appropriate authorities without delay.</p>
+    </div>
+  </div>
+</div>
+
+<!-- REFUND POLICY -->
+<div class="policy-modal" id="modal-refund">
+  <div class="policy-modal-inner">
+    <button class="policy-modal-close" onclick="closePolicy('refund')">✕</button>
+    <h2 class="policy-modal-title">Refund Policy</h2>
+    <p class="policy-modal-date">Last updated: 1 June 2026</p>
+    <div class="policy-modal-body">
+      <p>We want you to feel confident when you commit to Learn with Zidi. This policy sets out clearly when a refund applies.</p>
+
+      <h3>Sessions Cancelled by Your Tutor</h3>
+      <p>If your tutor cancels a session with less than 24 hours' notice and cannot offer a reschedule in the same billing period, we will credit the value of that session to your next invoice, or issue a pro-rata refund on request.</p>
+
+      <h3>Cancellation Within the First Two Sessions</h3>
+      <p>If you are not satisfied after your first or second session and decide not to continue, contact us within 7 days of that session. We will issue a refund for unused sessions in the current billing period, minus a £10 / ₦10,000 administration fee.</p>
+
+      <h3>Cancellation After the Second Session</h3>
+      <p>After two sessions have been delivered, the monthly fee is non-refundable for the current billing period. You may cancel future billing periods by giving 30 days' notice.</p>
+
+      <h3>Technical Failures</h3>
+      <p>If a session cannot proceed due to a platform outage on our tutor's side, we will reschedule at no cost. If the outage is on your side, the session is considered delivered and no refund applies. If the cause is genuinely disputed, we will consider a credit at our discretion.</p>
+
+      <h3>Exceptional Circumstances</h3>
+      <p>We will consider requests for refunds or credits in exceptional circumstances (e.g. serious illness, bereavement) on a case-by-case basis. Email hello@zeedeelearn.com with supporting details.</p>
+
+      <h3>How to Request a Refund</h3>
+      <p>Email hello@zeedeelearn.com with your name, the reason for the request, and any relevant details. Approved refunds are processed within 5–10 business days to the original payment method.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHILD SAFETY POLICY -->
+<div class="policy-modal" id="modal-childsafety">
+  <div class="policy-modal-inner">
+    <button class="policy-modal-close" onclick="closePolicy('childsafety')">✕</button>
+    <h2 class="policy-modal-title">Child Safety Policy</h2>
+    <p class="policy-modal-date">Last updated: 1 June 2026</p>
+    <div class="policy-modal-body">
+      <p>The safety and wellbeing of children using Learn with Zidi is our highest priority. This policy outlines our safeguarding approach for all sessions involving learners under the age of 18.</p>
+
+      <h3>Tutor Vetting</h3>
+      <p>All tutors working with learners under 18 are required to:</p>
+      <ul>
+        <li>Complete an enhanced DBS (Disclosure and Barring Service) check, or equivalent in their country of residence, before their first session with a minor</li>
+        <li>Provide two references, at least one of which must speak to their suitability to work with children</li>
+        <li>Complete a brief safeguarding awareness review as part of their onboarding</li>
+        <li>Agree to our Fair Play Policy and Child Safety Policy in writing</li>
+      </ul>
+
+      <h3>Session Environment</h3>
+      <ul>
+        <li>All sessions are delivered via Zoom or Google Meet — video only, in a visible, appropriate setting</li>
+        <li>Parents and guardians are encouraged to be present in the home during sessions, especially for younger children</li>
+        <li>Sessions must not take place in private or one-to-one chat outside the agreed video platform without parental knowledge</li>
+        <li>No session may be recorded by the tutor without prior written consent from the parent or guardian</li>
+      </ul>
+
+      <h3>Appropriate Content</h3>
+      <p>All tutors are required to deliver age-appropriate content and to maintain professional conduct at all times. Sharing or displaying material that is violent, explicit, discriminatory, or otherwise unsuitable for the learner's age group is grounds for immediate termination.</p>
+
+      <h3>Reporting a Concern</h3>
+      <p>If a parent, learner, or tutor has a safeguarding concern — including anything that suggests a child may be at risk of harm — they should contact us immediately at hello@zeedeelearn.com. We will take all disclosures seriously. Where a concern suggests a child is at immediate risk of harm, we will refer the matter to statutory authorities (e.g. local children's services or the police) without delay and regardless of any request for confidentiality.</p>
+
+      <h3>Designated Safeguarding Lead</h3>
+      <p>Learn with Zidi has a designated safeguarding lead who is responsible for managing all child protection concerns. Contact details are available on request at hello@zeedeelearn.com.</p>
+
+      <h3>Policy Review</h3>
+      <p>This policy is reviewed annually and updated in line with changes to statutory guidance, including the Department for Education's Keeping Children Safe in Education guidance and relevant Ofsted frameworks where applicable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PARENTS FAQ -->
+<div class="policy-modal" id="modal-faq">
+  <div class="policy-modal-inner">
+    <button class="policy-modal-close" onclick="closePolicy('faq')">✕</button>
+    <h2 class="policy-modal-title">Parents FAQ</h2>
+    <p class="policy-modal-date">Last updated: 1 June 2026</p>
+    <div class="policy-modal-body">
+
+      <h3>How does the matching process work?</h3>
+      <p>When you enquire, we gather details about your child — the subject, their level, your availability, and your timezone. We then hand-pick a tutor from our vetted pool who is the right fit. We don't use an algorithm; every match is made by a person. You'll hear back from us within 24 hours.</p>
+
+      <h3>Which platform are sessions delivered on?</h3>
+      <p>Sessions take place via Zoom or Google Meet. Both are free for learners to use. You don't need an account — your tutor will send a meeting link before each session. We do not host sessions on our own platform.</p>
+
+      <h3>What if we don't get on with our tutor?</h3>
+      <p>If you're not happy after the first or second session, let us know. We'll rematch you with a different tutor at no extra cost. There are no awkward conversations to have — just email us and we'll handle it.</p>
+
+      <h3>How long are the sessions?</h3>
+      <p>Standard sessions are 1 hour. This gives enough time for warm-up, focused learning, and a short review — without rushing. Two sessions per week (our Standard plan) provides the right rhythm for real, lasting progress.</p>
+
+      <h3>What's the minimum commitment?</h3>
+      <p>We bill monthly. You can cancel any time with 30 days' notice. We don't lock you into contracts — but consistency is what gets results, so we'd encourage you to give it at least 8 weeks before drawing any conclusions.</p>
+
+      <h3>How do I pay?</h3>
+      <p>We send a monthly invoice by email. You can pay in NGN, GBP, CAD, or USD via bank transfer. We do not currently accept card payment directly, but this is coming soon.</p>
+
+      <h3>What languages are available right now?</h3>
+      <p>Yoruba and Igbo are available now. Piano and African dishes are coming soon. If you need something else — Hausa, French, chess, another language — get in touch and we'll do our best to find the right tutor for you.</p>
+
+      <h3>Is my child safe in online sessions?</h3>
+      <p>Yes. All tutors working with children hold a current DBS check and have been vetted by us directly. Sessions are video-only via Zoom or Google Meet. We encourage parents to be present in the home during lessons, especially for younger children. Full details are in our Child Safety Policy.</p>
+
+      <h3>Can I sit in on sessions?</h3>
+      <p>Absolutely — and for younger children we actively encourage it. You're welcome to observe any session. Some parents find it helpful to check in for the first few minutes, then step back to let the child build a rapport with their tutor.</p>
+
+      <h3>What if a session has to be cancelled?</h3>
+      <p>If your tutor cancels, we'll reschedule at no cost or credit the session. If you need to cancel, please give your tutor at least 24 hours' notice. More than two no-shows in a billing period may result in the sessions being forfeited for that month.</p>
+
+      <h3>I have a question not answered here</h3>
+      <p>Email us at hello@zeedeelearn.com or message us on WhatsApp. We aim to respond within a few hours during business hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ FORM JS ═══════════════════════════════ -->
+<script>
+  // ── Policy modals ──
+  function openPolicy(key) {
+    document.getElementById('modal-' + key).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePolicy(key) {
+    document.getElementById('modal-' + key).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.policy-modal').forEach(function(m) {
+      m.addEventListener('click', function(e) {
+        if (e.target === m) {
+          m.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  });
+
+  // ── State ──
+  const S = {};           // form data store
+  const days = new Set(); // selected days
+
+  // ── Progress ──
+  function updateProgress(step) {
+    for (let i = 1; i <= 5; i++) {
+      const seg = document.getElementById('seg' + i);
+      seg.className = 'prog-seg' + (i < step ? ' done' : i === step ? ' active' : '');
+    }
+  }
+
+  // ── Step navigation ──
+  function go(from, to) {
+    // If going back, skip validation entirely
+    if (to < from) {
+      document.getElementById('fstep' + from).classList.remove('active');
+      document.getElementById('fstep' + to).classList.add('active');
+      updateProgress(to);
+      document.getElementById('enrol').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    // Validation (forward only)
+    if (from === 1 && !S.learnerType) { alert('Please choose who this is for.'); return; }
+    if (from === 2) {
+      if (!S.subject) { alert('Please choose a subject.'); return; }
+      if (S.subject === 'other' && !document.getElementById('subjectOther').value.trim()) {
+        alert('Please describe what you\'d like to learn.'); return;
+      }
+      if (!S.level) { alert('Please choose a level.'); return; }
+      if (!S.sessionType) { alert('Please choose a session type.'); return; }
+      S.subjectDetail = S.subject === 'other' ? document.getElementById('subjectOther').value.trim() : S.subject;
+      // Show/hide name+age in step 3 depending on session type
+      const isGrp = S.sessionType && S.sessionType.startsWith('group');
+      document.getElementById('learnerNameWrap').style.display = isGrp ? 'none' : 'block';
+      document.getElementById('learnerAgeWrap').style.display = isGrp ? 'none' : 'block';
+      if (isGrp) {
+        document.getElementById('step3title').textContent = 'A bit more detail';
+      }
+      // Capture group names if applicable
+      if (isGrp) {
+        if (!S.groupSize) { alert('Please choose your group size.'); return; }
+        const nameInputs = document.querySelectorAll('#group-names-wrap .group-name-input');
+        const ageSelects = document.querySelectorAll('#group-names-wrap .group-age-select');
+        const groupMembers = [];
+        for (let i = 0; i < nameInputs.length; i++) {
+          const n = nameInputs[i].value.trim();
+          if (!n) { alert('Please enter all group member names.'); return; }
+          const age = ageSelects[i] ? ageSelects[i].value : '';
+          groupMembers.push(age ? n + ' (age ' + age + ')' : n);
+        }
+        S.groupNames = groupMembers.join(', ');
+      }
+    }
+    if (from === 3) {
+      const isGroup = S.sessionType && S.sessionType.startsWith('group');
+      if (!isGroup) {
+        const name = document.getElementById('learnerName').value.trim();
+        if (!name) { alert('Please enter the learner\'s name.'); return; }
+        S.learnerName = name;
+        S.age = S.age || '';
+      }
+      S.goal = document.getElementById('goal').value.trim();
+    }
+    if (from === 4) {
+      if (!document.getElementById('timezone').value) { alert('Please select your timezone.'); return; }
+      S.timezone = document.getElementById('timezone').value;
+      const selSlots = Array.from(document.querySelectorAll('#timeslot-grid .slot-btn.sel')).map(b => b.dataset.label);
+      S.preferredSlots = selSlots.join(', ');
+    }
+
+    document.getElementById('fstep' + from).classList.remove('active');
+    document.getElementById('fstep' + to).classList.add('active');
+    updateProgress(to);
+    document.getElementById('enrol').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── Currency toggle ──
+  const RATES = { NGN: 1, USD: 1/1400, GBP: 1/1900, CAD: 1/1000 };
+  const SYMBOLS = { NGN: '₦', USD: '$', GBP: '£', CAD: 'CA$' };
+  let activeCur = 'NGN';
+
+  function setCurrency(cur, btn) {
+    activeCur = cur;
+    document.querySelectorAll('#currencyToggle .cur-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.price-num[data-ngn]').forEach(el => {
+      const ngn = parseInt(el.dataset.ngn);
+      const converted = Math.round(ngn * RATES[cur]);
+      const sym = SYMBOLS[cur];
+      if (cur === 'NGN') {
+        el.textContent = sym + converted.toLocaleString();
+      } else {
+        el.textContent = sym + converted.toLocaleString();
+      }
+    });
+  }
+
+  // ── Choice button ──
+  function pick(key, val, btn, gridId) {
+    document.querySelectorAll('#' + gridId + ' .choice-btn').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    S[key] = val;
+    // Personalise step 3 heading for adult learners
+    if (key === 'learnerType') {
+      const isAdult = val === 'adult';
+      document.getElementById('step3title').textContent = isAdult ? 'About you' : 'About your child';
+      document.getElementById('learnerNameLabel').textContent = isAdult ? 'Preferred first name' : 'Child\'s first name';
+      document.getElementById('cg-age-child').style.display = isAdult ? 'none' : 'grid';
+      document.getElementById('cg-age-adult').style.display = isAdult ? 'grid' : 'none';
+      document.getElementById('step5title').textContent = isAdult ? 'How do we reach you?' : 'Contact information for parent or guardian';
+      document.getElementById('contactNameLabel').textContent = isAdult ? 'Your full name' : 'Parent / guardian\'s full name';
+    }
+  }
+
+  // ── Other subject toggle ──
+  function toggleOther() {
+    const show = S.subject === 'other';
+    document.getElementById('otherField').style.display = show ? 'block' : 'none';
+  }
+
+  // ── Session type change ──
+  function onSessionTypeChange(val) {
+    S.sessionType = val;
+    const isGroup = val && val.startsWith('group');
+    document.getElementById('group-size-wrap').style.display = isGroup ? 'block' : 'none';
+    if (!isGroup) {
+      document.getElementById('group-names-wrap').style.display = 'none';
+      document.getElementById('group-names-wrap').innerHTML = '';
+      S.groupSize = null;
+      S.groupNames = '';
+      // Clear group size selection
+      document.querySelectorAll('#cg-groupsize .choice-btn').forEach(b => b.classList.remove('sel'));
+    }
+  }
+
+  // ── Group name fields ──
+  function renderGroupNames(size) {
+    S.groupSize = size;
+    const wrap = document.getElementById('group-names-wrap');
+    wrap.innerHTML = '';
+    wrap.style.display = 'block';
+    for (let i = 1; i <= size; i++) {
+      const div = document.createElement('div');
+      div.className = 'fg';
+      div.style.marginTop = '0.6rem';
+      div.innerHTML =
+        '<label class="flabel">Person ' + i + '</label>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">' +
+          '<input class="finput group-name-input" placeholder="First name" />' +
+          '<select class="finput group-age-select">' +
+            '<option value="">Age range</option>' +
+            '<option value="5-8">5–8</option>' +
+            '<option value="9-12">9–12</option>' +
+            '<option value="13-17">13–17</option>' +
+            '<option value="18-25">18–25</option>' +
+            '<option value="26-33">26–33</option>' +
+            '<option value="34-40">34–40</option>' +
+            '<option value="40+">40+</option>' +
+          '</select>' +
+        '</div>';
+      wrap.appendChild(div);
+    }
+  }
+
+  // ── Pre-select subject from subjects section ──
+  function preSelectSubject(subject) {
+    // Pre-select the button in step 2's subject grid
+    document.querySelectorAll('#cg-subject .choice-btn').forEach(b => b.classList.remove('sel'));
+    const btn = document.querySelector('#cg-subject .choice-btn[data-val="' + subject + '"]');
+    if (btn) {
+      btn.classList.add('sel');
+      S.subject = subject;
+      // Hide other field if it was open
+      document.getElementById('otherField').style.display = 'none';
+    }
+  }
+
+  // ── Render time slots ──
+  function renderTimeSlots() {
+    const tzSelect = document.getElementById('timezone');
+    const utcOffset = parseFloat(tzSelect.value);
+    if (isNaN(utcOffset)) return;
+
+    const wrap = document.getElementById('timeslot-wrap');
+    const grid = document.getElementById('timeslot-grid');
+    const note = document.getElementById('timeslot-note');
+    grid.innerHTML = '';
+    wrap.style.display = 'block';
+
+    // Tutor available 8am–10pm WAT (WAT = UTC+1)
+    // WAT hours: 8 to 22 (inclusive start, so 8,9,...,21 = 14 slots)
+    const watStart = 8;
+    const watEnd = 23; // last slot starts at 22 (10pm WAT)
+
+    // Offset between WAT and user timezone:
+    // watHour = localHour + (1 - utcOffset)
+    // localHour = watHour - 1 + utcOffset
+    const diff = utcOffset - 1; // difference: local = WAT + diff
+
+    // Determine timezone label for note
+    const tzLabel = tzSelect.options[tzSelect.selectedIndex].text;
+    note.textContent = 'Times shown in your local time (' + tzLabel.split('—')[0].trim() + ').';
+
+    for (let watH = watStart; watH < watEnd; watH++) {
+      const localH = watH + diff;
+      // Format WAT time label
+      const watAMPM = watH < 12 ? 'am' : 'pm';
+      const watDisp = (watH > 12 ? watH - 12 : watH === 0 ? 12 : watH) + watAMPM;
+      // Format local time label
+      const localDisp = formatHour(localH);
+      const label = localDisp + (Math.round(diff) !== 0 ? ' (' + watDisp + ' WAT)' : '');
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'slot-btn';
+      btn.dataset.label = label;
+      btn.dataset.wat = watDisp;
+      btn.textContent = localDisp;
+
+      // Mark unavailable if outside 0-23 local
+      if (localH < 0 || localH >= 24) {
+        btn.classList.add('slot-unavail');
+        btn.disabled = true;
+        btn.title = 'Outside your day';
+      } else {
+        btn.onclick = function() { btn.classList.toggle('sel'); };
+      }
+      grid.appendChild(btn);
+    }
+  }
+
+  function formatHour(h) {
+    // Handles values outside 0-23 gracefully for display
+    const norm = ((h % 24) + 24) % 24;
+    const period = norm < 12 ? 'am' : 'pm';
+    const disp = norm === 0 ? 12 : norm > 12 ? norm - 12 : norm;
+    return disp + period;
+  }
+
+  // ── Day toggle ──
+  function toggleDay(btn) {
+    btn.classList.toggle('sel');
+    const d = btn.textContent.trim();
+    days.has(d) ? days.delete(d) : days.add(d);
+  }
+
+  // ── Submit ──
+  function submitForm() {
+    const parentName = document.getElementById('parentName').value.trim();
+    const email      = document.getElementById('email').value.trim();
+    const whatsapp   = document.getElementById('whatsapp').value.trim();
+
+    if (!parentName) { alert('Please enter your name.'); return; }
+    if (!email && !whatsapp) { alert('Please provide at least an email or WhatsApp number.'); return; }
+
+    S.parentName = parentName;
+    S.email      = email;
+    S.whatsapp   = whatsapp;
+    S.referral   = document.getElementById('referral').value;
+
+    fetch('https://formspree.io/f/xbdvaovb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(S)
+    }).then(function(res) {
+      if (res.ok) {
+        document.getElementById('formProg').style.display = 'none';
+        document.querySelectorAll('.fstep').forEach(el => el.style.display = 'none');
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again or email us directly at hello@zeedeelearn.com.');
+      }
+    }).catch(function() {
+      alert('Could not send your enquiry. Please email us at hello@zeedeelearn.com.');
+    });
+  }
+
+  // ══════════════════════════════════════════
+  // TUTOR FORM
+  // ══════════════════════════════════════════
+  const T = {};
+  const Tdays = new Set();
+  const Tages = new Set();
+
+  function TupdateProgress(step) {
+    for (let i = 1; i <= 5; i++) {
+      const seg = document.getElementById('tseg' + i);
+      seg.className = 'prog-seg' + (i < step ? ' done' : i === step ? ' active' : '');
+    }
+  }
+
+  function Tgo(from, to) {
+    if (from === 1) {
+      if (!T.subject) { alert('Please choose what you teach.'); return; }
+      if (T.subject === 'other' && !document.getElementById('tsubjectOther').value.trim()) {
+        alert('Please describe what you teach.'); return;
+      }
+      T.subjectDetail = T.subject === 'other' ? document.getElementById('tsubjectOther').value.trim() : T.subject;
+    }
+    if (from === 2) {
+      if (!T.experience) { alert('Please select your experience level.'); return; }
+      T.bio = document.getElementById('tbio').value.trim();
+    }
+    if (from === 3) {
+      T.ageGroups = Array.from(Tages).join(', ');
+      T.rate = document.getElementById('trate').value.trim();
+    }
+    if (from === 4) {
+      if (!document.getElementById('ttimezone').value) { alert('Please select your timezone.'); return; }
+      T.timezone = document.getElementById('ttimezone').value;
+      T.days = Array.from(Tdays).join(', ');
+    }
+    document.getElementById('tfstep' + from).classList.remove('active');
+    document.getElementById('tfstep' + to).classList.add('active');
+    TupdateProgress(to);
+    document.getElementById('tutor-cta').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function Tpick(key, val, btn, gridId) {
+    document.querySelectorAll('#' + gridId + ' .choice-btn').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    T[key] = val;
+    if (key === 'subject') TtoggleOther();
+  }
+
+  function TtoggleOther() {
+    document.getElementById('totherField').style.display = T.subject === 'other' ? 'block' : 'none';
+  }
+
+  function TtoggleDay(btn) {
+    btn.classList.toggle('sel');
+    const d = btn.textContent.trim();
+    Tdays.has(d) ? Tdays.delete(d) : Tdays.add(d);
+  }
+
+  function TtoggleAge(btn) {
+    btn.classList.toggle('sel');
+    const a = btn.firstChild.textContent.trim();
+    Tages.has(a) ? Tages.delete(a) : Tages.add(a);
+  }
+
+  function TsubmitForm() {
+    const name = document.getElementById('tname').value.trim();
+    const email = document.getElementById('temail').value.trim();
+    const whatsapp = document.getElementById('twhatsapp').value.trim();
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!email && !whatsapp) { alert('Please provide at least an email or WhatsApp number.'); return; }
+    T.name = name; T.email = email; T.whatsapp = whatsapp;
+    T.notes = document.getElementById('tnotes').value.trim();
+
+    // ── WIRE UP: same as student form, use a separate Formspree form ID or Airtable table ──
+    console.log('[ZidiLearn] Tutor application:', T);
+
+    document.getElementById('tformProg').style.display = 'none';
+    document.querySelectorAll('#tutor-cta .fstep').forEach(el => el.style.display = 'none');
+    document.getElementById('tformSuccess').style.display = 'block';
+  }
+</script>
+
+
+<script>
+  // Waitlist drawer
+  function openWaitlist() {
+    document.getElementById('wlOverlay').classList.add('open');
+    document.getElementById('wlDrawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeWaitlist() {
+    document.getElementById('wlOverlay').classList.remove('open');
+    document.getElementById('wlDrawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeWaitlist();
+  });
+
+  // Waitlist form submission
+  (function() {
+    var form = document.getElementById('wl-form');
+    if (!form) return;
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('.wl-submit');
+      btn.textContent = 'Submitting…';
+      btn.disabled = true;
+      try {
+        var res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          document.getElementById('wl-form-content').style.display = 'none';
+          document.getElementById('wl-success').style.display = 'block';
+        } else {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      } catch(err) {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
