@@ -76,8 +76,7 @@ function FeatureCard({ feature, delay }: { feature: Feature; delay: number }) {
     >
       {/* Icon container */}
       <div
-        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-        style={{ backgroundColor: 'rgba(201,138,0,0.12)' }}
+        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-gold-pale"
         aria-hidden="true"
       >
         <Icon size={18} className="text-gold" strokeWidth={1.75} />
@@ -158,7 +157,7 @@ export default function FamilySection() {
             >
               <a
                 href="#enrol"
-                className="inline-flex items-center gap-2 bg-gold text-white font-body font-semibold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 hover:bg-gold-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                className="inline-flex items-center gap-2 bg-midnight text-ivory font-body font-semibold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 hover:bg-midnight-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
               >
                 Find a Tutor
               </a>

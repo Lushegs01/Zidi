@@ -47,7 +47,7 @@ export const pricingPlans: PricingPlan[] = [
     sessionsPerMonth: 4,
     cadenceLabel: 'total per month',
     featured: false,
-    gradient: 'from-[#1A2540] to-[#0E1623]',
+    gradient: 'from-[#211E17] to-[#14120F]',
     features: [
       '4 sessions per month',
       '1-on-1 with your tutor',
@@ -66,7 +66,7 @@ export const pricingPlans: PricingPlan[] = [
     cadenceLabel: 'total per month',
     featured: true,
     badge: 'Most popular',
-    gradient: 'from-[#7A5200] to-[#0E1623]',
+    gradient: 'from-[#63754F] to-[#14120F]',
     features: [
       '8 sessions per month',
       '1-on-1 with your tutor',
@@ -84,7 +84,7 @@ export const pricingPlans: PricingPlan[] = [
     sessionsPerMonth: 4,
     cadenceLabel: 'per person, per month',
     featured: false,
-    gradient: 'from-forest to-[#0D2B1E]',
+    gradient: 'from-forest to-[#14120F]',
     features: [
       '4 group sessions per month',
       'Groups of 2–4 people',
@@ -102,7 +102,7 @@ export const pricingPlans: PricingPlan[] = [
     sessionsPerMonth: 8,
     cadenceLabel: 'per person, per month',
     featured: false,
-    gradient: 'from-[#8B2A0E] to-[#0E1623]',
+    gradient: 'from-[#8B5A3C] to-[#14120F]',
     features: [
       '8 group sessions per month',
       'Groups of 2–4 people',

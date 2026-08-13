@@ -4,17 +4,18 @@
 
 /* ── Design tokens ──────────────────────────────────────────────────────── */
 :root {
-  --midnight:    #0E1623;
-  --midnight-2:  #1A2540;
-  --gold:        #C98A00;
-  --gold-bright: #E5A800;
-  --gold-pale:   rgba(201, 138, 0, 0.12);
-  --ivory:       #F8F4ED;
-  --ivory-dark:  #EDE8DF;
-  --forest:      #1A4731;
-  --coral:       #D94F1E;
-  --zidi-text:   #1A1A2E;
-  --zidi-muted:  #6B6B7E;
+  --midnight:    #14120F;
+  --midnight-2:  #211E17;
+  --gold:        #63754F;
+  --gold-bright: #7E9169;
+  --gold-pale:   rgba(99, 117, 79, 0.12);
+  --ivory:       #F4EEE1;
+  --ivory-dark:  #E8DFC9;
+  --forest:      #3F4A34;
+  --coral:       #C15A3D;
+  --clay:        #AD8862;
+  --zidi-text:   #17140F;
+  --zidi-muted:  #82796B;
 }
 
 /* ── Base resets ────────────────────────────────────────────────────────── */
@@ -41,7 +42,7 @@ body {
 
 /* ── Gold pale background ───────────────────────────────────────────────── */
 .bg-gold-pale {
-  background-color: rgba(201, 138, 0, 0.12);
+  background-color: rgba(99, 117, 79, 0.12);
 }
 
 /* ── Scrollbar styling ──────────────────────────────────────────────────── */
@@ -65,17 +66,17 @@ body {
 
 /* ── Selection ──────────────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(201, 138, 0, 0.2);
+  background: rgba(99, 117, 79, 0.2);
   color: var(--zidi-text);
 }
 
-/* ── Ankara stripe pattern ──────────────────────────────────────────────── */
+/* ── Ankara stripe pattern (quiet, earth-tone) ────────────────────────────── */
 .ankara-stripe {
   background: repeating-linear-gradient(
     180deg,
-    #C98A00   0px,  #C98A00  20px,
-    #D94F1E  20px, #D94F1E  40px,
-    #1A4731  40px, #1A4731  60px,
+    #63754F   0px,  #63754F  20px,
+    #AD8862  20px, #AD8862  40px,
+    #3F4A34  40px, #3F4A34  60px,
     transparent 60px, transparent 70px
   );
 }
@@ -96,7 +97,7 @@ body {
 .policy-body p {
   font-size: 0.9rem;
   line-height: 1.8;
-  color: rgba(26, 26, 46, 0.8);
+  color: rgba(23, 20, 15, 0.8);
   margin-bottom: 0.75rem;
 }
 
@@ -108,5 +109,5 @@ body {
 .policy-body ul li {
   margin-bottom: 0.35rem;
   line-height: 1.7;
-  color: rgba(26, 26, 46, 0.8);
+  color: rgba(23, 20, 15, 0.8);
 }

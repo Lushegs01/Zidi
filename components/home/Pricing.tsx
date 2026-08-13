@@ -65,14 +65,14 @@ function PricingCard({ plan, currency, onEnroll, index, inView }: PricingCardPro
       whileHover={{ y: -4, transition: { duration: 0.22, ease: 'easeOut' } }}
       className={`relative bg-white rounded-card overflow-hidden flex flex-col shadow-sm ${
         plan.featured
-          ? 'ring-2 ring-gold shadow-[0_8px_40px_rgba(201,138,0,0.18)]'
+          ? 'ring-2 ring-gold shadow-[0_8px_40px_rgba(99,117,79,0.18)]'
           : 'border border-black/[0.07]'
       }`}
     >
       {/* Featured badge */}
       {plan.featured && plan.badge && (
         <div className="absolute top-4 right-4 z-10">
-          <span className="inline-flex items-center px-3 py-1 rounded-full bg-gold text-midnight text-xs font-bold tracking-wide uppercase">
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-gold text-ivory text-xs font-bold tracking-wide uppercase">
             {plan.badge}
           </span>
         </div>
@@ -191,7 +191,7 @@ export default function Pricing({ onEnroll }: PricingProps) {
                 aria-pressed={currency === c}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold tracking-wide transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 ${
                   currency === c
-                    ? 'bg-gold text-midnight shadow-sm'
+                    ? 'bg-gold text-ivory shadow-sm'
                     : 'bg-transparent text-zidi-text hover:text-gold'
                 }`}
               >

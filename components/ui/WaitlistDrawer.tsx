@@ -72,7 +72,7 @@ export default function WaitlistDrawer({ isOpen, onClose }: WaitlistDrawerProps)
           {/* Overlay */}
           <motion.div
             key="wl-overlay"
-            className="fixed inset-0 z-[900] bg-[rgba(10,14,22,0.75)] backdrop-blur-sm"
+            className="fixed inset-0 z-[900] bg-[rgba(20,18,15,0.75)] backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -116,8 +116,8 @@ export default function WaitlistDrawer({ isOpen, onClose }: WaitlistDrawerProps)
               {/* Content */}
               {submitted ? (
                 <div className="flex-1 flex flex-col items-center justify-center text-center py-12">
-                  <div className="w-14 h-14 rounded-full border-[1.5px] border-gold bg-gold/15 flex items-center justify-center mb-5">
-                    <CheckCircle size={26} className="text-gold" />
+                  <div className="w-14 h-14 rounded-full border-[1.5px] border-gold-bright bg-gold-bright/15 flex items-center justify-center mb-5">
+                    <CheckCircle size={26} className="text-gold-bright" />
                   </div>
                   <h4 className="font-display text-xl font-bold text-ivory mb-2">
                     You&apos;re on the list!
@@ -133,40 +133,40 @@ export default function WaitlistDrawer({ isOpen, onClose }: WaitlistDrawerProps)
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="block text-xs font-semibold text-ivory/45 uppercase tracking-[0.06em] mb-1.5">
-                          First Name <span className="text-gold">*</span>
+                          First Name <span className="text-gold-bright">*</span>
                         </label>
                         <input
                           type="text"
                           name="first_name"
                           placeholder="e.g. Ama"
                           required
-                          className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold focus:bg-white/9 transition-colors font-body"
+                          className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold-bright focus:bg-white/9 transition-colors font-body"
                         />
                       </div>
                       <div>
                         <label className="block text-xs font-semibold text-ivory/45 uppercase tracking-[0.06em] mb-1.5">
-                          Last Name <span className="text-gold">*</span>
+                          Last Name <span className="text-gold-bright">*</span>
                         </label>
                         <input
                           type="text"
                           name="last_name"
                           placeholder="e.g. Mensah"
                           required
-                          className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold focus:bg-white/9 transition-colors font-body"
+                          className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold-bright focus:bg-white/9 transition-colors font-body"
                         />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold text-ivory/45 uppercase tracking-[0.06em] mb-1.5">
-                        Email Address <span className="text-gold">*</span>
+                        Email Address <span className="text-gold-bright">*</span>
                       </label>
                       <input
                         type="email"
                         name="email"
                         placeholder="your@email.com"
                         required
-                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold focus:bg-white/9 transition-colors font-body"
+                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold-bright focus:bg-white/9 transition-colors font-body"
                       />
                     </div>
 
@@ -178,31 +178,31 @@ export default function WaitlistDrawer({ isOpen, onClose }: WaitlistDrawerProps)
                         type="tel"
                         name="whatsapp"
                         placeholder="+234 800 000 0000"
-                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold focus:bg-white/9 transition-colors font-body"
+                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold-bright focus:bg-white/9 transition-colors font-body"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold text-ivory/45 uppercase tracking-[0.06em] mb-1.5">
-                        Which language(s) are you waiting for? <span className="text-gold">*</span>
+                        Which language(s) are you waiting for? <span className="text-gold-bright">*</span>
                       </label>
                       <input
                         type="text"
                         name="language"
                         placeholder="e.g. Hausa, Twi, Swahili…"
                         required
-                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold focus:bg-white/9 transition-colors font-body"
+                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory placeholder-ivory/25 outline-none focus:border-gold-bright focus:bg-white/9 transition-colors font-body"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold text-ivory/45 uppercase tracking-[0.06em] mb-1.5">
-                        Who are the classes for? <span className="text-gold">*</span>
+                        Who are the classes for? <span className="text-gold-bright">*</span>
                       </label>
                       <select
                         name="learner_type"
                         required
-                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory outline-none focus:border-gold focus:bg-white/9 transition-colors font-body appearance-none"
+                        className="w-full bg-white/6 border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-ivory outline-none focus:border-gold-bright focus:bg-white/9 transition-colors font-body appearance-none"
                       >
                         <option value="" disabled>Select an option</option>
                         <option value="My child / children">My child / children</option>
@@ -219,7 +219,7 @@ export default function WaitlistDrawer({ isOpen, onClose }: WaitlistDrawerProps)
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full mt-6 bg-gold hover:bg-gold-bright text-midnight font-body font-bold text-sm py-3.5 rounded-[6px] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full mt-6 bg-ivory hover:bg-white text-midnight font-body font-bold text-sm py-3.5 rounded-[6px] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {submitting ? 'Joining…' : 'Join the Waitlist'}
                   </button>

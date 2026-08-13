@@ -37,8 +37,8 @@ const NOISE_STYLE: React.CSSProperties = {
   backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
   backgroundRepeat: 'repeat',
   backgroundSize: '160px 160px',
-  opacity: 0.035,
-  mixBlendMode: 'overlay' as React.CSSProperties['mixBlendMode'],
+  opacity: 0.025,
+  mixBlendMode: 'multiply' as React.CSSProperties['mixBlendMode'],
 }
 
 // ---------------------------------------------------------------------------
@@ -66,7 +66,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen bg-midnight overflow-hidden flex flex-col"
+      className="relative min-h-screen bg-ivory overflow-hidden flex flex-col"
       aria-label="Hero — Zidi language tutoring"
     >
       {/* ── Noise texture overlay ─────────────────────────────────────────── */}
@@ -80,10 +80,10 @@ export default function Hero() {
 
       {/* ── Ghost text — ÈDÈ ──────────────────────────────────────────────── */}
       <div
-        className="pointer-events-none absolute right-0 bottom-0 z-0 select-none leading-none font-display text-gold"
+        className="pointer-events-none absolute right-0 bottom-0 z-0 select-none leading-none font-display text-midnight"
         style={{
           fontSize: 'clamp(8rem, 22vw, 22rem)',
-          opacity: 0.03,
+          opacity: 0.035,
           lineHeight: 1,
           paddingBottom: '2rem',
           paddingRight: '1rem',
@@ -105,10 +105,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: reduced ? 0 : -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 w-fit backdrop-blur-sm mb-7"
+            className="inline-flex items-center gap-2.5 rounded-full border border-midnight/12 bg-midnight/[0.03] px-4 py-2 w-fit mb-7"
           >
             <span className="h-2 w-2 rounded-full bg-gold animate-pulse flex-shrink-0" />
-            <span className="text-sm font-body font-medium tracking-wide text-white/70">
+            <span className="text-sm font-body font-medium tracking-wide text-zidi-text/65">
               Now enrolling · Yoruba &amp; Igbo
             </span>
           </motion.div>
@@ -116,7 +116,7 @@ export default function Hero() {
           {/* Headline */}
           <FadeUp delay={0.2}>
             <h1
-              className="font-display text-white"
+              className="font-display text-midnight"
               style={{
                 fontSize: 'clamp(2.8rem, 6vw, 5.5rem)',
                 lineHeight: '1.04',
@@ -129,7 +129,7 @@ export default function Hero() {
 
           {/* Sub-headline */}
           <FadeUp delay={0.35} className="mt-6 lg:mt-7">
-            <p className="font-body text-white/60 text-lg lg:text-xl leading-relaxed max-w-[540px]">
+            <p className="font-body text-zidi-muted text-lg lg:text-xl leading-relaxed max-w-[540px]">
               Zidi connects diaspora families and learners with trusted, vetted tutors
               for personalized online Yoruba and Igbo lessons. One-on-one or group.
               Your schedule, your timezone.
@@ -141,13 +141,13 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4">
               <button
                 onClick={() => scrollTo('enrol')}
-                className="inline-flex items-center justify-center rounded-full bg-gold text-midnight font-body font-semibold text-base px-8 py-4 hover:bg-gold-bright active:scale-[0.97] transition-all duration-200 shadow-lg shadow-gold/20"
+                className="inline-flex items-center justify-center rounded-full bg-midnight text-ivory font-body font-semibold text-base px-8 py-4 hover:bg-midnight-2 active:scale-[0.97] transition-all duration-200 shadow-lg shadow-midnight/15"
               >
                 Find a Tutor
               </button>
               <button
                 onClick={() => scrollTo('subjects')}
-                className="inline-flex items-center justify-center rounded-full border border-white/20 text-white font-body font-semibold text-base px-8 py-4 hover:bg-white/[0.08] hover:border-white/40 active:scale-[0.97] transition-all duration-200 backdrop-blur-sm"
+                className="inline-flex items-center justify-center rounded-full border border-midnight/20 text-midnight font-body font-semibold text-base px-8 py-4 hover:bg-midnight/[0.04] hover:border-midnight/35 active:scale-[0.97] transition-all duration-200"
               >
                 Explore Languages
               </button>
@@ -156,7 +156,7 @@ export default function Hero() {
 
           {/* Trust row */}
           <FadeUp delay={0.65} className="mt-9">
-            <div className="border-t border-white/[0.08] pt-5">
+            <div className="border-t border-midnight/[0.08] pt-5">
               <ul className="flex flex-wrap gap-x-6 gap-y-2">
                 {[
                   'Vetted tutors',
@@ -165,9 +165,9 @@ export default function Hero() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-center gap-2 text-sm font-body text-white/40"
+                    className="flex items-center gap-2 text-sm font-body text-zidi-muted"
                   >
-                    <span className="text-gold/70 text-base leading-none" aria-hidden="true">✓</span>
+                    <span className="text-gold text-base leading-none" aria-hidden="true">✓</span>
                     {item}
                   </li>
                 ))}
@@ -182,14 +182,14 @@ export default function Hero() {
             variants={imageVariants}
             initial="hidden"
             animate="visible"
-            className="relative w-full max-w-[480px] lg:max-w-none lg:w-full aspect-[4/5] rounded-card overflow-hidden shadow-2xl shadow-black/50"
+            className="relative w-full max-w-[480px] lg:max-w-none lg:w-full aspect-[4/5] rounded-card overflow-hidden shadow-2xl shadow-midnight/20"
           >
             {/* Warm colour grade overlay */}
             <div
               className="absolute inset-0 z-10 rounded-card pointer-events-none"
               style={{
                 background:
-                  'linear-gradient(160deg, rgba(201,138,0,0.08) 0%, transparent 50%, rgba(14,22,35,0.55) 100%)',
+                  'linear-gradient(160deg, rgba(99,117,79,0.10) 0%, transparent 45%, rgba(20,18,15,0.4) 100%)',
               }}
               aria-hidden="true"
             />
@@ -208,25 +208,16 @@ export default function Hero() {
               initial={{ opacity: 0, y: reduced ? 0 : 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 0.5, ease: 'easeOut' }}
-              className="absolute bottom-5 left-5 z-20 rounded-xl bg-midnight/80 backdrop-blur-md border border-white/10 px-4 py-3 shadow-xl"
+              className="absolute bottom-5 left-5 z-20 rounded-xl bg-ivory/90 backdrop-blur-md border border-midnight/[0.06] px-4 py-3 shadow-xl"
             >
-              <p className="font-display text-gold text-2xl leading-none">200+</p>
-              <p className="font-body text-white/60 text-xs mt-0.5 tracking-wide">
+              <p className="font-display text-midnight text-2xl leading-none">200+</p>
+              <p className="font-body text-zidi-muted text-xs mt-0.5 tracking-wide">
                 Families learning with Zidi
               </p>
             </motion.div>
           </motion.div>
         </div>
       </div>
-
-      {/* ── Bottom gradient fade into next section ────────────────────────── */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 z-10"
-        style={{
-          background: 'linear-gradient(to bottom, transparent, rgba(14,22,35,0.6))',
-        }}
-        aria-hidden="true"
-      />
     </section>
   )
 }

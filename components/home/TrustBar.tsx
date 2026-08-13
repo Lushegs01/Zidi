@@ -58,7 +58,7 @@ export default function TrustBar() {
               className="flex-shrink-0"
               size={15}
               strokeWidth={2.2}
-              style={{ color: '#7FCF9E' }}
+              style={{ color: 'var(--gold-bright)' }}
               aria-hidden="true"
             />
             <span className="font-body text-sm font-medium text-white/80 whitespace-nowrap">

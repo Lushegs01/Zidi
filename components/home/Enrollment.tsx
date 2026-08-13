@@ -217,10 +217,10 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
         <span className="block text-[0.7rem] font-bold tracking-[0.12em] uppercase text-gold mb-3">
           Enrol
         </span>
-        <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[#1A1A2E] mb-3">
+        <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.025em] text-zidi-text mb-3">
           Ready? Let&apos;s get started.
         </h2>
-        <p className="text-[#6B6B7E] text-lg leading-relaxed max-w-[44ch] mb-12">
+        <p className="text-zidi-muted text-lg leading-relaxed max-w-[44ch] mb-12">
           Fill in the details below and we&apos;ll match you with the right tutor within 24 hours.
         </p>
 
@@ -236,10 +236,10 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
               <div className="w-16 h-16 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-5">
                 <CheckCircle size={32} className="text-forest" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-[#1A1A2E] mb-3">
+              <h3 className="font-display text-2xl font-bold text-zidi-text mb-3">
                 Form submitted. We will be in touch.
               </h3>
-              <p className="text-[#6B6B7E] leading-relaxed max-w-[34ch] mx-auto">
+              <p className="text-zidi-muted leading-relaxed max-w-[34ch] mx-auto">
                 We&apos;ll review your details and reach out via email or WhatsApp to confirm next steps.
               </p>
             </motion.div>
@@ -277,7 +277,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {state.step === 1 && (
                     <div>
                       <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 1 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-[#1A1A2E] mb-6">Who is this for?</h3>
+                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">Who is this for?</h3>
                       <div className="grid grid-cols-2 gap-3 mb-6">
                         <ChoiceBtn
                           selected={state.learnerType === 'child'}
@@ -285,8 +285,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                           className="p-4"
                         >
                           <span className="text-2xl block mb-1.5">👧🏾</span>
-                          <span className="block font-semibold text-sm text-[#1A1A2E]">My child</span>
-                          <span className="block text-xs text-[#6B6B7E] mt-0.5">I&apos;m booking for my son or daughter</span>
+                          <span className="block font-semibold text-sm text-zidi-text">My child</span>
+                          <span className="block text-xs text-zidi-muted mt-0.5">I&apos;m booking for my son or daughter</span>
                         </ChoiceBtn>
                         <ChoiceBtn
                           selected={state.learnerType === 'adult'}
@@ -294,8 +294,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                           className="p-4"
                         >
                           <span className="text-2xl block mb-1.5">🧑🏾‍💼</span>
-                          <span className="block font-semibold text-sm text-[#1A1A2E]">Myself</span>
-                          <span className="block text-xs text-[#6B6B7E] mt-0.5">I&apos;m the one learning</span>
+                          <span className="block font-semibold text-sm text-zidi-text">Myself</span>
+                          <span className="block text-xs text-zidi-muted mt-0.5">I&apos;m the one learning</span>
                         </ChoiceBtn>
                       </div>
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
@@ -303,7 +303,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                         <button
                           type="button"
                           onClick={validateAndNext}
-                          className="bg-gold hover:bg-gold-bright text-midnight font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors"
+                          className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors"
                         >
                           Continue →
                         </button>
@@ -315,11 +315,11 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {state.step === 2 && (
                     <div>
                       <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 2 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-[#1A1A2E] mb-6">What would you like to learn?</h3>
+                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">What would you like to learn?</h3>
 
                       {/* Subject */}
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-2">Subject</label>
+                        <label className="block text-xs font-semibold text-zidi-text mb-2">Subject</label>
                         <div className="grid grid-cols-2 gap-2">
                           {(['yoruba', 'igbo'] as const).map(s => (
                             <ChoiceBtn
@@ -329,7 +329,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                               className="p-3 flex items-center gap-2.5"
                             >
                               <span className="text-lg">{s === 'yoruba' ? '🗣️' : '💬'}</span>
-                              <span className="font-semibold text-sm text-[#1A1A2E] capitalize">{s}</span>
+                              <span className="font-semibold text-sm text-zidi-text capitalize">{s}</span>
                             </ChoiceBtn>
                           ))}
                           <ChoiceBtn
@@ -337,8 +337,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                             onClick={() => set('subject', 'other')}
                             className="p-3 col-span-2"
                           >
-                            <span className="block font-semibold text-sm text-[#1A1A2E]">Something else</span>
-                            <span className="block text-xs text-[#6B6B7E] mt-0.5">Chess, music, cooking, another language…</span>
+                            <span className="block font-semibold text-sm text-zidi-text">Something else</span>
+                            <span className="block text-xs text-zidi-muted mt-0.5">Chess, music, cooking, another language…</span>
                           </ChoiceBtn>
                         </div>
                         {state.subject === 'other' && (
@@ -347,14 +347,14 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                             placeholder="What would you like to learn?"
                             value={state.subjectOther}
                             onChange={e => set('subjectOther', e.target.value)}
-                            className="mt-2 w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body"
+                            className="mt-2 w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body"
                           />
                         )}
                       </div>
 
                       {/* Level */}
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-2">Current level</label>
+                        <label className="block text-xs font-semibold text-zidi-text mb-2">Current level</label>
                         <div className="space-y-2">
                           {[
                             { val: 'beginner', label: 'Complete beginner', sub: 'No experience at all' },
@@ -368,8 +368,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                               className="w-full p-3 flex items-center justify-between"
                             >
                               <div>
-                                <span className="block font-semibold text-sm text-[#1A1A2E]">{l.label}</span>
-                                <span className="block text-xs text-[#6B6B7E] mt-0.5">{l.sub}</span>
+                                <span className="block font-semibold text-sm text-zidi-text">{l.label}</span>
+                                <span className="block text-xs text-zidi-muted mt-0.5">{l.sub}</span>
                               </div>
                               {state.level === l.val && (
                                 <CheckCircle size={16} className="text-gold flex-shrink-0 ml-2" />
@@ -381,7 +381,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
 
                       {/* Session type */}
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-2">Session type</label>
+                        <label className="block text-xs font-semibold text-zidi-text mb-2">Session type</label>
                         <div className="relative">
                           <select
                             value={state.sessionType || ''}
@@ -394,7 +394,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                                 set('sessionType', val)
                               }
                             }}
-                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body appearance-none"
+                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body appearance-none"
                           >
                             <option value="" disabled>Select a plan…</option>
                             <option value="private-once">Private · Once per week</option>
@@ -402,14 +402,14 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                             <option value="group-once">Group · Once per week</option>
                             <option value="group-twice">Group · Twice per week</option>
                           </select>
-                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B6B7E] pointer-events-none" />
+                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-zidi-muted pointer-events-none" />
                         </div>
                       </div>
 
                       {/* Group size */}
                       {isGroup && (
                         <div className="mb-4">
-                          <label className="block text-xs font-semibold text-[#1A1A2E] mb-2">
+                          <label className="block text-xs font-semibold text-zidi-text mb-2">
                             How many people in your group?
                           </label>
                           <div className="grid grid-cols-3 gap-2 mb-2">
@@ -420,17 +420,17 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                                 onClick={() => handleGroupSizeChange(n)}
                                 className="p-2.5 text-center"
                               >
-                                <span className="font-bold text-sm text-[#1A1A2E]">{n}</span>
+                                <span className="font-bold text-sm text-zidi-text">{n}</span>
                               </ChoiceBtn>
                             ))}
                           </div>
-                          <p className="text-xs text-[#6B6B7E]">Groups are 2–4 people who all know each other. Pricing is per person.</p>
+                          <p className="text-xs text-zidi-muted">Groups are 2–4 people who all know each other. Pricing is per person.</p>
 
                           {state.groupMembers.length > 0 && (
                             <div className="mt-3 space-y-2">
                               {state.groupMembers.map((m, i) => (
                                 <div key={i}>
-                                  <label className="block text-xs font-semibold text-[#1A1A2E] mb-1">Person {i + 1}</label>
+                                  <label className="block text-xs font-semibold text-zidi-text mb-1">Person {i + 1}</label>
                                   <div className="grid grid-cols-2 gap-2">
                                     <input
                                       type="text"
@@ -441,7 +441,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                                         members[i] = { ...members[i], name: e.target.value }
                                         set('groupMembers', members)
                                       }}
-                                      className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body"
+                                      className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body"
                                     />
                                     <select
                                       value={m.age}
@@ -450,7 +450,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                                         members[i] = { ...members[i], age: e.target.value }
                                         set('groupMembers', members)
                                       }}
-                                      className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body"
+                                      className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body"
                                     >
                                       <option value="">Age range</option>
                                       <option value="5-8">5–8</option>
@@ -471,8 +471,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-4">
-                        <button type="button" onClick={() => goTo(1)} className="text-sm text-[#6B6B7E] hover:text-[#1A1A2E] transition-colors">← Back</button>
-                        <button type="button" onClick={validateAndNext} className="bg-gold hover:bg-gold-bright text-midnight font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
+                        <button type="button" onClick={() => goTo(1)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
+                        <button type="button" onClick={validateAndNext} className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
                       </div>
                     </div>
                   )}
@@ -481,14 +481,14 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {state.step === 3 && (
                     <div>
                       <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 3 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-[#1A1A2E] mb-6">
+                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">
                         {isGroup ? 'A bit more detail' : state.learnerType === 'adult' ? 'About you' : 'About your child'}
                       </h3>
 
                       {!isGroup && (
                         <>
                           <div className="mb-4">
-                            <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">
+                            <label className="block text-xs font-semibold text-zidi-text mb-1.5">
                               {state.learnerType === 'adult' ? 'Preferred first name' : "Child's first name"}
                             </label>
                             <input
@@ -496,17 +496,17 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                               placeholder="First name only"
                               value={state.learnerName}
                               onChange={e => set('learnerName', e.target.value)}
-                              className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body"
+                              className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body"
                             />
                           </div>
 
                           <div className="mb-4">
-                            <label className="block text-xs font-semibold text-[#1A1A2E] mb-2">Age</label>
+                            <label className="block text-xs font-semibold text-zidi-text mb-2">Age</label>
                             {state.learnerType === 'child' ? (
                               <div className="grid grid-cols-3 gap-2">
                                 {['5–8', '9–12', '13–17'].map(a => (
                                   <ChoiceBtn key={a} selected={state.age === a} onClick={() => set('age', a)} className="p-2.5 text-center">
-                                    <span className="font-semibold text-sm text-[#1A1A2E]">{a}</span>
+                                    <span className="font-semibold text-sm text-zidi-text">{a}</span>
                                   </ChoiceBtn>
                                 ))}
                               </div>
@@ -514,7 +514,7 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                               <div className="grid grid-cols-4 gap-2">
                                 {['18–25', '26–33', '34–40', '40+'].map(a => (
                                   <ChoiceBtn key={a} selected={state.age === a} onClick={() => set('age', a)} className="p-2.5 text-center">
-                                    <span className="font-semibold text-sm text-[#1A1A2E]">{a}</span>
+                                    <span className="font-semibold text-sm text-zidi-text">{a}</span>
                                   </ChoiceBtn>
                                 ))}
                               </div>
@@ -524,22 +524,22 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                       )}
 
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">
+                        <label className="block text-xs font-semibold text-zidi-text mb-1.5">
                           What&apos;s the goal?{' '}
-                          <span className="font-normal text-[#6B6B7E]">(optional)</span>
+                          <span className="font-normal text-zidi-muted">(optional)</span>
                         </label>
                         <textarea
                           value={state.goal}
                           onChange={e => set('goal', e.target.value)}
                           placeholder="e.g. I want my daughter to speak Yoruba with her grandparents by Christmas…"
-                          className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body min-h-[90px] resize-y"
+                          className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body min-h-[90px] resize-y"
                         />
                       </div>
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-4">
-                        <button type="button" onClick={() => goTo(2)} className="text-sm text-[#6B6B7E] hover:text-[#1A1A2E] transition-colors">← Back</button>
-                        <button type="button" onClick={validateAndNext} className="bg-gold hover:bg-gold-bright text-midnight font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
+                        <button type="button" onClick={() => goTo(2)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
+                        <button type="button" onClick={validateAndNext} className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
                       </div>
                     </div>
                   )}
@@ -548,12 +548,12 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {state.step === 4 && (
                     <div>
                       <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 4 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-[#1A1A2E] mb-6">When are you free?</h3>
+                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">When are you free?</h3>
 
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-2">
+                        <label className="block text-xs font-semibold text-zidi-text mb-2">
                           Best days for sessions{' '}
-                          <span className="font-normal text-[#6B6B7E]">(select all that work)</span>
+                          <span className="font-normal text-zidi-muted">(select all that work)</span>
                         </label>
                         <div className="grid grid-cols-7 gap-1.5">
                           {DAYS.map(day => (
@@ -563,8 +563,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                               onClick={() => toggleDay(day)}
                               className={`py-2 text-center text-xs font-semibold rounded-[6px] border-[1.5px] transition-all ${
                                 state.selectedDays.has(day)
-                                  ? 'border-gold bg-gold-pale text-[#1A1A2E]'
-                                  : 'border-ivory-dark bg-ivory text-[#6B6B7E] hover:border-gold/60'
+                                  ? 'border-gold bg-gold-pale text-zidi-text'
+                                  : 'border-ivory-dark bg-ivory text-zidi-muted hover:border-gold/60'
                               }`}
                             >
                               {day}
@@ -574,29 +574,29 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                       </div>
 
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">Your timezone</label>
+                        <label className="block text-xs font-semibold text-zidi-text mb-1.5">Your timezone</label>
                         <div className="relative">
                           <select
                             value={state.timezoneValue}
                             onChange={e => handleTimezoneChange(e.target.value)}
-                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body appearance-none"
+                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body appearance-none"
                           >
                             <option value="">Select your timezone</option>
                             {timezones.map(tz => (
                               <option key={tz.value} value={tz.value}>{tz.label}</option>
                             ))}
                           </select>
-                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B6B7E] pointer-events-none" />
+                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-zidi-muted pointer-events-none" />
                         </div>
                       </div>
 
                       {state.timezoneOffset !== null && timeSlots.length > 0 && (
                         <div className="mb-4">
-                          <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">
+                          <label className="block text-xs font-semibold text-zidi-text mb-1.5">
                             Preferred times{' '}
-                            <span className="font-normal text-[#6B6B7E]">(select all that work)</span>
+                            <span className="font-normal text-zidi-muted">(select all that work)</span>
                           </label>
-                          <p className="text-xs text-[#6B6B7E] mb-2">
+                          <p className="text-xs text-zidi-muted mb-2">
                             Times shown in your local time.
                             {state.timezoneOffset !== 1 && ' (WAT times in brackets)'}
                           </p>
@@ -609,10 +609,10 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                                 onClick={() => slot.available && toggleSlot(slot.label)}
                                 className={`py-1.5 text-center text-xs font-semibold rounded-[6px] border-[1.5px] transition-all ${
                                   !slot.available
-                                    ? 'border-ivory-dark bg-ivory/50 text-[#6B6B7E]/35 cursor-not-allowed'
+                                    ? 'border-ivory-dark bg-ivory/50 text-zidi-muted/35 cursor-not-allowed'
                                     : state.selectedSlots.has(slot.label)
-                                    ? 'border-gold bg-gold text-midnight'
-                                    : 'border-ivory-dark bg-ivory text-[#1A1A2E] hover:border-gold/60'
+                                    ? 'border-gold bg-gold text-ivory'
+                                    : 'border-ivory-dark bg-ivory text-zidi-text hover:border-gold/60'
                                 }`}
                               >
                                 {slot.localDisplay}
@@ -624,8 +624,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-4">
-                        <button type="button" onClick={() => goTo(3)} className="text-sm text-[#6B6B7E] hover:text-[#1A1A2E] transition-colors">← Back</button>
-                        <button type="button" onClick={validateAndNext} className="bg-gold hover:bg-gold-bright text-midnight font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
+                        <button type="button" onClick={() => goTo(3)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
+                        <button type="button" onClick={validateAndNext} className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
                       </div>
                     </div>
                   )}
@@ -634,12 +634,12 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {state.step === 5 && (
                     <div>
                       <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 5 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-[#1A1A2E] mb-6">
+                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">
                         {state.learnerType === 'adult' ? 'How do we reach you?' : 'Contact information for parent or guardian'}
                       </h3>
 
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">
+                        <label className="block text-xs font-semibold text-zidi-text mb-1.5">
                           {state.learnerType === 'adult' ? 'Your full name' : 'Parent / guardian\'s full name'}
                         </label>
                         <input
@@ -647,43 +647,43 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                           placeholder="Your full name"
                           value={state.contactName}
                           onChange={e => set('contactName', e.target.value)}
-                          className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body"
+                          className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body"
                         />
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                         <div>
-                          <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">Email address</label>
+                          <label className="block text-xs font-semibold text-zidi-text mb-1.5">Email address</label>
                           <input
                             type="email"
                             placeholder="you@example.com"
                             value={state.email}
                             onChange={e => set('email', e.target.value)}
-                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body"
+                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body"
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">WhatsApp number</label>
+                          <label className="block text-xs font-semibold text-zidi-text mb-1.5">WhatsApp number</label>
                           <input
                             type="tel"
                             placeholder="+44 7700 000000"
                             value={state.whatsapp}
                             onChange={e => set('whatsapp', e.target.value)}
-                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body"
+                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body"
                           />
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <label className="block text-xs font-semibold text-[#1A1A2E] mb-1.5">
+                        <label className="block text-xs font-semibold text-zidi-text mb-1.5">
                           How did you hear about Learn with Zidi?{' '}
-                          <span className="font-normal text-[#6B6B7E]">(optional)</span>
+                          <span className="font-normal text-zidi-muted">(optional)</span>
                         </label>
                         <div className="relative">
                           <select
                             value={state.referral}
                             onChange={e => set('referral', e.target.value)}
-                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-[#1A1A2E] focus:border-gold focus:bg-white outline-none transition-colors font-body appearance-none"
+                            className="w-full border-[1.5px] border-ivory-dark bg-ivory rounded-[6px] px-3 py-2.5 text-sm text-zidi-text focus:border-gold focus:bg-white outline-none transition-colors font-body appearance-none"
                           >
                             <option value="">Select one</option>
                             <option>A friend or family member</option>
@@ -692,17 +692,17 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                             <option>Google search</option>
                             <option>Other</option>
                           </select>
-                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B6B7E] pointer-events-none" />
+                          <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-zidi-muted pointer-events-none" />
                         </div>
                       </div>
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-6">
-                        <button type="button" onClick={() => goTo(4)} className="text-sm text-[#6B6B7E] hover:text-[#1A1A2E] transition-colors">← Back</button>
+                        <button type="button" onClick={() => goTo(4)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
                         <button
                           type="button"
                           onClick={handleSubmit}
-                          className="bg-gold hover:bg-gold-bright text-midnight font-semibold text-base px-8 py-3 rounded-[6px] transition-colors"
+                          className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-base px-8 py-3 rounded-[6px] transition-colors"
                         >
                           Submit →
                         </button>

@@ -34,10 +34,10 @@ function FooterLogo() {
     >
       {/* Ascending bar chart mark — no white bg in footer */}
       <span className="inline-flex items-end gap-[3px]" aria-hidden="true">
-        <span className="block w-[6px] rounded-sm bg-gold" style={{ height: '0.35rem' }} />
-        <span className="block w-[6px] rounded-sm bg-gold" style={{ height: '0.6rem' }} />
-        <span className="block w-[6px] rounded-sm bg-gold" style={{ height: '0.85rem' }} />
-        <span className="block w-[6px] rounded-sm bg-gold" style={{ height: '1.15rem' }} />
+        <span className="block w-[6px] rounded-sm bg-gold-bright" style={{ height: '0.35rem' }} />
+        <span className="block w-[6px] rounded-sm bg-gold-bright" style={{ height: '0.6rem' }} />
+        <span className="block w-[6px] rounded-sm bg-gold-bright" style={{ height: '0.85rem' }} />
+        <span className="block w-[6px] rounded-sm bg-gold-bright" style={{ height: '1.15rem' }} />
       </span>
       <span className="font-display font-bold text-sm tracking-wide leading-none text-white">
         ZIDI
@@ -79,7 +79,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
             </p>
             <a
               href="mailto:hello@zeedeelearn.com"
-              className="text-xs text-white/35 hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold w-fit"
+              className="text-xs text-white/35 hover:text-gold-bright transition-colors duration-200 focus:outline-none focus-visible:text-gold-bright w-fit"
             >
               hello@zeedeelearn.com
             </a>
@@ -98,7 +98,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
                 <li key={label}>
                   <button
                     onClick={() => scrollTo(href)}
-                    className="text-sm text-white/45 hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold text-left"
+                    className="text-sm text-white/45 hover:text-gold-bright transition-colors duration-200 focus:outline-none focus-visible:text-gold-bright text-left"
                   >
                     {label}
                   </button>
@@ -120,7 +120,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
                 <li key={id}>
                   <button
                     onClick={() => onOpenPolicy(id)}
-                    className="text-sm text-white/45 hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold text-left"
+                    className="text-sm text-white/45 hover:text-gold-bright transition-colors duration-200 focus:outline-none focus-visible:text-gold-bright text-left"
                   >
                     {label}
                   </button>
@@ -139,7 +139,7 @@ export default function Footer({ onOpenPolicy }: FooterProps) {
             {trustItems.map((item) => (
               <li key={item} className="flex items-center gap-1.5">
                 {/* Subtle checkmark dot */}
-                <span className="block w-1 h-1 rounded-full bg-gold/50" aria-hidden="true" />
+                <span className="block w-1 h-1 rounded-full bg-gold-bright/50" aria-hidden="true" />
                 <span className="text-xs text-white/30">{item}</span>
               </li>
             ))}

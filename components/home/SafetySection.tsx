@@ -106,7 +106,7 @@ export default function SafetySection({ onOpenPolicy }: SafetySectionProps) {
               variants={fadeUp}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              className="text-xs font-semibold tracking-widest uppercase text-gold mb-4"
+              className="text-xs font-semibold tracking-widest uppercase text-gold-bright mb-4"
             >
               Learning with confidence
             </motion.p>
@@ -144,7 +144,7 @@ export default function SafetySection({ onOpenPolicy }: SafetySectionProps) {
                   className="flex items-start gap-4"
                   role="listitem"
                 >
-                  <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/[0.06] text-gold shrink-0 mt-0.5">
+                  <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/[0.06] text-gold-bright shrink-0 mt-0.5">
                     <point.icon size={18} strokeWidth={1.75} />
                   </span>
                   <div>
@@ -169,7 +169,7 @@ export default function SafetySection({ onOpenPolicy }: SafetySectionProps) {
             className="flex flex-col lg:justify-center"
           >
             <div className="bg-white/[0.04] border border-white/[0.09] rounded-card p-7 md:p-8">
-              <p className="text-xs font-semibold tracking-widest uppercase text-gold mb-7">
+              <p className="text-xs font-semibold tracking-widest uppercase text-gold-bright mb-7">
                 Tutor vetting process
               </p>
 
@@ -181,7 +181,7 @@ export default function SafetySection({ onOpenPolicy }: SafetySectionProps) {
                     role="listitem"
                   >
                     {/* Step number */}
-                    <span className="font-display text-2xl font-bold text-gold leading-none shrink-0 w-8 mt-0.5">
+                    <span className="font-display text-2xl font-bold text-gold-bright leading-none shrink-0 w-8 mt-0.5">
                       {step.number}
                     </span>
 
@@ -199,7 +199,7 @@ export default function SafetySection({ onOpenPolicy }: SafetySectionProps) {
                     <CheckCircle
                       size={18}
                       strokeWidth={1.75}
-                      className="text-forest shrink-0 mt-0.5"
+                      className="text-gold-bright shrink-0 mt-0.5"
                       aria-label="Completed"
                     />
                   </li>
