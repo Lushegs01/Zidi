@@ -195,7 +195,7 @@ export default function Hero() {
             />
 
             <Image
-              src="https://images.pexels.com/photos/6550044/pexels-photo-6550044.jpeg"
+              src="https://images.pexels.com/photos/6994162/pexels-photo-6994162.jpeg"
               alt="African mother and child learning together — Zidi language tutoring"
               fill
               priority
