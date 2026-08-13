@@ -77,7 +77,7 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
       >
         <nav className="max-w-content mx-auto flex items-center justify-between py-4 px-5 md:py-5 md:px-6">
           {/* Logo */}
-          <ZidiLogo />
+          <ZidiLogo dark={!scrolled} />
 
           {/* Desktop nav links */}
           <ul className="hidden md:flex items-center gap-7" role="list">
@@ -85,7 +85,11 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
               <li key={label}>
                 <button
                   onClick={() => scrollTo(href)}
-                  className="text-zidi-text/65 text-sm font-medium hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold"
+                  className={`text-sm font-medium transition-colors duration-200 focus:outline-none ${
+                    scrolled
+                      ? 'text-zidi-text/65 hover:text-gold focus-visible:text-gold'
+                      : 'text-white/80 hover:text-gold-bright focus-visible:text-gold-bright'
+                  }`}
                 >
                   {label}
                 </button>
@@ -94,7 +98,11 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
             <li>
               <button
                 onClick={onOpenWaitlist}
-                className="text-zidi-text/65 text-sm font-medium hover:text-gold transition-colors duration-200 focus:outline-none focus-visible:text-gold"
+                className={`text-sm font-medium transition-colors duration-200 focus:outline-none ${
+                  scrolled
+                    ? 'text-zidi-text/65 hover:text-gold focus-visible:text-gold'
+                    : 'text-white/80 hover:text-gold-bright focus-visible:text-gold-bright'
+                }`}
               >
                 Waitlist
               </button>
@@ -118,17 +126,17 @@ export default function Navbar({ onOpenPolicy: _onOpenPolicy, onOpenWaitlist }: 
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="block w-6 h-[2px] bg-midnight rounded-full origin-center"
+              className={`block w-6 h-[2px] rounded-full origin-center ${scrolled ? 'bg-midnight' : 'bg-white'}`}
             />
             <motion.span
               animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className="block w-6 h-[2px] bg-midnight rounded-full"
+              className={`block w-6 h-[2px] rounded-full ${scrolled ? 'bg-midnight' : 'bg-white'}`}
             />
             <motion.span
               animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="block w-6 h-[2px] bg-midnight rounded-full origin-center"
+              className={`block w-6 h-[2px] rounded-full origin-center ${scrolled ? 'bg-midnight' : 'bg-white'}`}
             />
           </button>
         </nav>

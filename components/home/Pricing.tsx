@@ -31,7 +31,7 @@ function PriceDisplay({ price }: { price: string }) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.22, ease: 'easeOut' }}
-        className="font-display text-4xl font-bold leading-none"
+        className="font-display text-4xl font-bold leading-none text-white"
       >
         {price}
       </motion.span>
@@ -63,47 +63,43 @@ function PricingCard({ plan, currency, onEnroll, index, inView }: PricingCardPro
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       whileHover={{ y: -4, transition: { duration: 0.22, ease: 'easeOut' } }}
-      className={`relative bg-white rounded-card overflow-hidden flex flex-col shadow-sm ${
+      className={`relative rounded-card overflow-hidden flex flex-col backdrop-blur-xl border ${
         plan.featured
-          ? 'ring-2 ring-gold shadow-[0_8px_40px_rgba(99,117,79,0.18)]'
-          : 'border border-black/[0.07]'
+          ? 'bg-white/[0.07] border-gold-bright/40 ring-1 ring-gold-bright/40 shadow-[0_8px_40px_rgba(126,145,105,0.15)]'
+          : 'bg-white/[0.045] border-white/10'
       }`}
     >
       {/* Featured badge */}
       {plan.featured && plan.badge && (
-        <div className="absolute top-4 right-4 z-10">
-          <span className="inline-flex items-center px-3 py-1 rounded-full bg-gold text-ivory text-xs font-bold tracking-wide uppercase">
+        <div className="absolute top-5 right-5 z-10">
+          <span className="inline-flex items-center px-3 py-1 rounded-full bg-gold-bright text-midnight text-xs font-bold tracking-wide uppercase">
             {plan.badge}
           </span>
         </div>
       )}
 
-      {/* Gradient header */}
-      <div
-        className={`bg-gradient-to-br ${plan.gradient} px-6 pt-6 pb-7`}
-      >
-        <p className="text-xs font-semibold tracking-widest uppercase text-white/50 mb-1">
-          {plan.type === 'private' ? 'Private' : 'Group'}
-        </p>
-        <h3 className="font-display text-xl font-semibold text-white leading-snug">
-          {plan.name}
-        </h3>
-      </div>
-
       {/* Body */}
-      <div className="flex flex-col flex-1 px-6 py-6 gap-5">
+      <div className="flex flex-col flex-1 px-7 pt-7 pb-7 gap-5">
+        {/* Type + name */}
+        <div>
+          <p className="text-xs font-semibold tracking-widest uppercase text-white/40 mb-1.5">
+            {plan.type === 'private' ? 'Private' : 'Group'}
+          </p>
+          <h3 className="font-display text-xl font-semibold text-white leading-snug">
+            {plan.name}
+          </h3>
+        </div>
+
         {/* Frequency */}
-        <div className="flex items-center gap-2 text-zidi-muted text-sm">
+        <div className="flex items-center gap-2 text-white/45 text-sm">
           <Calendar size={14} strokeWidth={1.75} />
           <span>{plan.frequencyLabel}</span>
         </div>
 
         {/* Price */}
         <div className="flex flex-col gap-1">
-          <div className="text-zidi-text">
-            <PriceDisplay price={price} />
-          </div>
-          <p className="text-xs text-zidi-muted leading-none">
+          <PriceDisplay price={price} />
+          <p className="text-xs text-white/40 leading-none">
             {plan.cadenceLabel}
           </p>
         </div>
@@ -111,11 +107,11 @@ function PricingCard({ plan, currency, onEnroll, index, inView }: PricingCardPro
         {/* Features */}
         <ul className="flex flex-col gap-2.5 flex-1" role="list">
           {plan.features.map((feat) => (
-            <li key={feat} className="flex items-start gap-2.5 text-sm text-zidi-text leading-snug">
+            <li key={feat} className="flex items-start gap-2.5 text-sm text-white/75 leading-snug">
               <Check
                 size={14}
                 strokeWidth={2.5}
-                className="text-gold mt-0.5 shrink-0"
+                className="text-gold-bright mt-0.5 shrink-0"
               />
               {feat}
             </li>
@@ -124,7 +120,7 @@ function PricingCard({ plan, currency, onEnroll, index, inView }: PricingCardPro
 
         {/* CTA */}
         <Button
-          variant={plan.featured ? 'gold' : 'dark'}
+          variant="dark"
           size="md"
           className="w-full mt-2"
           onClick={handleCta}
@@ -145,10 +141,29 @@ export default function Pricing({ onEnroll }: PricingProps) {
     <section
       id="pricing"
       ref={sectionRef}
-      className="bg-ivory py-20 md:py-28"
+      className="relative bg-midnight py-20 md:py-28 overflow-hidden"
       aria-labelledby="pricing-heading"
     >
-      <div className="max-w-content mx-auto px-5 sm:px-8">
+      {/* ── Ambient glow orbs ─────────────────────────────────────────────── */}
+      <div
+        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[600px] z-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 50% at 50% 30%, rgba(126,145,105,0.28) 0%, rgba(173,136,98,0.14) 45%, transparent 75%)',
+          filter: 'blur(90px)',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] z-0"
+        style={{
+          background: 'radial-gradient(circle, rgba(99,117,79,0.18) 0%, transparent 70%)',
+          filter: 'blur(80px)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 max-w-content mx-auto px-5 sm:px-8">
 
         {/* Header */}
         <motion.div
@@ -158,16 +173,16 @@ export default function Pricing({ onEnroll }: PricingProps) {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center mb-12"
         >
-          <p className="text-xs font-semibold tracking-widest uppercase text-gold mb-4">
+          <p className="text-xs font-semibold tracking-widest uppercase text-gold-bright mb-4">
             Pricing
           </p>
           <h2
             id="pricing-heading"
-            className="font-display text-display-lg text-zidi-text mb-4"
+            className="font-display text-display-lg text-white mb-4"
           >
             One simple monthly rate.
           </h2>
-          <p className="text-zidi-muted text-base leading-relaxed max-w-lg mx-auto">
+          <p className="text-white/55 text-base leading-relaxed max-w-lg mx-auto">
             Covers tutor matching, scheduling, and all your sessions. No hidden
             fees. Cancel anytime with 30 days' notice.
           </p>
@@ -183,16 +198,16 @@ export default function Pricing({ onEnroll }: PricingProps) {
           role="group"
           aria-label="Select currency"
         >
-          <div className="inline-flex rounded-xl overflow-hidden border border-black/[0.09] bg-white/60 p-1 gap-1">
+          <div className="inline-flex rounded-xl overflow-hidden border border-white/10 bg-white/[0.05] backdrop-blur-sm p-1 gap-1">
             {currencies.map((c) => (
               <button
                 key={c}
                 onClick={() => setCurrency(c)}
                 aria-pressed={currency === c}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold tracking-wide transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 ${
+                className={`px-4 py-2 rounded-lg text-sm font-semibold tracking-wide transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-bright/60 ${
                   currency === c
-                    ? 'bg-gold text-ivory shadow-sm'
-                    : 'bg-transparent text-zidi-text hover:text-gold'
+                    ? 'bg-gold-bright text-midnight shadow-sm'
+                    : 'bg-transparent text-white/55 hover:text-white'
                 }`}
               >
                 {c}
@@ -223,10 +238,10 @@ export default function Pricing({ onEnroll }: PricingProps) {
           animate={isInView ? 'visible' : 'hidden'}
           className="text-center space-y-1"
         >
-          <p className="text-zidi-muted text-xs">
+          <p className="text-white/40 text-xs">
             Invoiced monthly, prepaid. Accepted in NGN, GBP, CAD, and USD.
           </p>
-          <p className="text-zidi-muted text-xs">
+          <p className="text-white/40 text-xs">
             Groups are 2–4 people who know each other. Pricing is per person.
           </p>
         </motion.div>
