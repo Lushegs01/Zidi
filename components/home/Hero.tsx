@@ -66,13 +66,13 @@ export default function Hero() {
         className="absolute inset-0 z-0"
       >
         <Image
-          src="https://images.pexels.com/photos/6994162/pexels-photo-6994162.jpeg"
-          alt="African mother and daughter learning together online — Zidi language tutoring"
+          src="https://images.pexels.com/photos/33900346/pexels-photo-33900346.jpeg"
+          alt="A Nigerian family in traditional attire at home — Zidi language tutoring"
           fill
           priority
           sizes="100vw"
           className="object-cover"
-          style={{ objectPosition: '68% 30%' }}
+          style={{ objectPosition: '50% 22%' }}
         />
       </motion.div>
 
@@ -165,8 +165,6 @@ export default function Hero() {
               <ul className="flex flex-wrap gap-x-6 gap-y-2">
                 {[
                   'Vetted tutors',
-                  'DBS checked for children',
-                  'Match within 24 hours',
                 ].map((item) => (
                   <li
                     key={item}
@@ -180,19 +178,6 @@ export default function Hero() {
             </div>
           </FadeUp>
         </div>
-
-        {/* Floating stat card */}
-        <motion.div
-          initial={{ opacity: 0, y: reduced ? 0 : 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.5, ease: 'easeOut' }}
-          className="self-end mt-8 lg:mt-0 lg:absolute lg:bottom-10 lg:right-0 xl:right-8 rounded-xl bg-ivory/90 backdrop-blur-md border border-black/[0.06] px-4 py-3 shadow-xl"
-        >
-          <p className="font-display text-midnight text-2xl leading-none">200+</p>
-          <p className="font-body text-zidi-muted text-xs mt-0.5 tracking-wide">
-            Families learning with Zidi
-          </p>
-        </motion.div>
       </div>
     </section>
   )
