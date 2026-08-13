@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect, useCallback, forwardRef, useImperativeHandle } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle, ChevronDown } from 'lucide-react'
+import { useState, useEffect, useCallback, useRef, forwardRef, useImperativeHandle } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { CheckCircle, ChevronDown, Check } from 'lucide-react'
 import { timezones, generateTimeSlots } from '@/data/timezones'
+import Button from '@/components/ui/Button'
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -42,6 +43,15 @@ interface EnrollmentState {
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
+  }),
+}
+
 // ── ChoiceBtn helper ────────────────────────────────────────────────────────
 function ChoiceBtn({
   selected,
@@ -58,14 +68,57 @@ function ChoiceBtn({
     <button
       type="button"
       onClick={onClick}
-      className={`text-left border-2 rounded-[12px] transition-all duration-150 ${
+      className={`relative text-left border-2 rounded-[12px] transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0 ${
         selected
-          ? 'border-gold bg-gold-pale'
-          : 'border-ivory-dark bg-ivory hover:border-gold/60'
+          ? 'border-gold bg-gold-pale shadow-[0_4px_16px_rgba(99,117,79,0.16)]'
+          : 'border-ivory-dark bg-ivory hover:border-gold/50 hover:shadow-[0_4px_14px_rgba(20,18,15,0.06)]'
       } ${className}`}
     >
       {children}
     </button>
+  )
+}
+
+// ── Stepper ─────────────────────────────────────────────────────────────────
+function Stepper({ step, total }: { step: number; total: number }) {
+  return (
+    <div
+      className="flex items-center mb-8"
+      role="progressbar"
+      aria-valuemin={1}
+      aria-valuemax={total}
+      aria-valuenow={step}
+      aria-label={`Step ${step} of ${total}`}
+    >
+      {Array.from({ length: total }, (_, i) => {
+        const n = i + 1
+        const isDone = n < step
+        const isCurrent = n === step
+        return (
+          <div key={n} className={`flex items-center ${n < total ? 'flex-1' : ''}`}>
+            <div
+              className={`flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[0.7rem] sm:text-xs font-bold shrink-0 transition-all duration-300 ${
+                isDone
+                  ? 'bg-gold text-white'
+                  : isCurrent
+                  ? 'bg-white text-gold border-2 border-gold ring-4 ring-gold-pale'
+                  : 'bg-white text-zidi-muted/60 border-2 border-ivory-dark'
+              }`}
+            >
+              {isDone ? <Check size={13} strokeWidth={3} /> : n}
+            </div>
+            {n < total && (
+              <div className="flex-1 h-[2px] mx-1.5 sm:mx-2 rounded-full overflow-hidden bg-ivory-dark">
+                <div
+                  className="h-full bg-gold rounded-full transition-all duration-500 ease-out"
+                  style={{ width: isDone ? '100%' : '0%' }}
+                />
+              </div>
+            )}
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
@@ -102,6 +155,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
   const [direction, setDirection] = useState(1)
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: '-80px 0px' })
 
   useImperativeHandle(ref, () => ({
     preSelectSubject(subject: string) {
@@ -204,6 +259,14 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
     ? generateTimeSlots(state.timezoneOffset)
     : []
 
+  const stepTitles: Record<number, string> = {
+    1: 'Who is this for?',
+    2: 'What would you like to learn?',
+    3: isGroup ? 'A bit more detail' : state.learnerType === 'adult' ? 'About you' : 'About your child',
+    4: 'When are you free?',
+    5: state.learnerType === 'adult' ? 'How do we reach you?' : 'Contact information for parent or guardian',
+  }
+
   const variants = {
     enter: (d: number) => ({ opacity: 0, x: d > 0 ? 32 : -32 }),
     center: { opacity: 1, x: 0 },
@@ -211,30 +274,71 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
   }
 
   return (
-    <section id="enrol" className="bg-ivory-dark py-24">
-      <div className="max-w-content mx-auto px-6">
+    <section id="enrol" ref={sectionRef} className="relative bg-ivory-dark py-24 md:py-32 overflow-hidden">
+
+      {/* ── Ambient glow orbs ─────────────────────────────────────────────── */}
+      <div
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] z-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 50% at 50% 30%, rgba(126,145,105,0.16) 0%, rgba(173,136,98,0.10) 45%, transparent 75%)',
+          filter: 'blur(80px)',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 w-[500px] h-[500px] z-0"
+        style={{
+          background: 'radial-gradient(circle, rgba(99,117,79,0.12) 0%, transparent 70%)',
+          filter: 'blur(80px)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 max-w-content mx-auto px-6">
         {/* Header */}
-        <span className="block text-[0.7rem] font-bold tracking-[0.12em] uppercase text-gold mb-3">
-          Enrol
-        </span>
-        <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.025em] text-zidi-text mb-3">
-          Ready? Let&apos;s get started.
-        </h2>
-        <p className="text-zidi-muted text-lg leading-relaxed max-w-[44ch] mb-12">
-          Fill in the details below and we&apos;ll match you with the right tutor within 24 hours.
-        </p>
+        <motion.div
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="text-center max-w-[560px] mx-auto mb-12 md:mb-14"
+        >
+          <span className="block text-[0.7rem] font-bold tracking-[0.12em] uppercase text-gold mb-3">
+            Enrol
+          </span>
+          <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.025em] text-zidi-text mb-4">
+            Ready? Let&apos;s get started.
+          </h2>
+          <p className="text-zidi-muted text-lg leading-relaxed">
+            Fill in the details below and we&apos;ll match you with the right tutor within 24 hours.
+          </p>
+        </motion.div>
 
         {/* Form box */}
-        <div className="max-w-[600px] bg-white rounded-[16px] shadow-[0_4px_48px_rgba(0,0,0,0.08)] border border-black/6 p-8 sm:p-10">
+        <motion.div
+          custom={0.15}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="max-w-[600px] mx-auto relative rounded-[26px] p-[1.5px] bg-gradient-to-br from-gold/45 via-clay/25 to-transparent shadow-[0_30px_80px_-24px_rgba(20,18,15,0.28)]"
+        >
+          <div className="relative bg-white rounded-[24.5px] p-8 sm:p-10 overflow-hidden">
+
+            {/* Decorative corner glow, clipped to the card */}
+            <div
+              className="pointer-events-none absolute -top-20 -right-20 w-56 h-56 rounded-full bg-gold-pale opacity-70 blur-3xl"
+              aria-hidden="true"
+            />
 
           {submitted ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-8"
+              className="relative text-center py-8"
             >
-              <div className="w-16 h-16 rounded-full bg-forest/10 flex items-center justify-center mx-auto mb-5">
-                <CheckCircle size={32} className="text-forest" />
+              <div className="w-20 h-20 rounded-full bg-forest/10 ring-8 ring-forest/5 flex items-center justify-center mx-auto mb-6">
+                <CheckCircle size={36} className="text-forest" />
               </div>
               <h3 className="font-display text-2xl font-bold text-zidi-text mb-3">
                 Form submitted. We will be in touch.
@@ -245,21 +349,16 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
             </motion.div>
           ) : (
             <>
-              {/* Progress bar */}
-              <div className="flex gap-1.5 mb-8">
-                {Array.from({ length: TOTAL_STEPS }, (_, i) => (
-                  <div
-                    key={i}
-                    className={`flex-1 h-1 rounded-full transition-all duration-300 ${
-                      i + 1 < state.step
-                        ? 'bg-forest'
-                        : i + 1 === state.step
-                        ? 'bg-gold'
-                        : 'bg-ivory-dark'
-                    }`}
-                  />
-                ))}
-              </div>
+              {/* Stepper */}
+              <Stepper step={state.step} total={TOTAL_STEPS} />
+
+              {/* Step title — shared across all steps */}
+              <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">
+                Step {state.step} of {TOTAL_STEPS}
+              </p>
+              <h3 className="font-display text-2xl sm:text-[1.7rem] font-bold text-zidi-text mb-6">
+                {stepTitles[state.step]}
+              </h3>
 
               {/* Steps */}
               <AnimatePresence custom={direction} mode="wait">
@@ -276,15 +375,13 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {/* ── STEP 1: Who ── */}
                   {state.step === 1 && (
                     <div>
-                      <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 1 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">Who is this for?</h3>
                       <div className="grid grid-cols-2 gap-3 mb-6">
                         <ChoiceBtn
                           selected={state.learnerType === 'child'}
                           onClick={() => set('learnerType', 'child')}
                           className="p-4"
                         >
-                          <span className="text-2xl block mb-1.5">👧🏾</span>
+                          <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-xl mb-2.5 shadow-sm">👧🏾</span>
                           <span className="block font-semibold text-sm text-zidi-text">My child</span>
                           <span className="block text-xs text-zidi-muted mt-0.5">I&apos;m booking for my son or daughter</span>
                         </ChoiceBtn>
@@ -293,20 +390,16 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                           onClick={() => set('learnerType', 'adult')}
                           className="p-4"
                         >
-                          <span className="text-2xl block mb-1.5">🧑🏾‍💼</span>
+                          <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-xl mb-2.5 shadow-sm">🧑🏾‍💼</span>
                           <span className="block font-semibold text-sm text-zidi-text">Myself</span>
                           <span className="block text-xs text-zidi-muted mt-0.5">I&apos;m the one learning</span>
                         </ChoiceBtn>
                       </div>
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-end">
-                        <button
-                          type="button"
-                          onClick={validateAndNext}
-                          className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors"
-                        >
+                        <Button variant="gold" size="sm" onClick={validateAndNext}>
                           Continue →
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   )}
@@ -314,9 +407,6 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {/* ── STEP 2: Subject ── */}
                   {state.step === 2 && (
                     <div>
-                      <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 2 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">What would you like to learn?</h3>
-
                       {/* Subject */}
                       <div className="mb-4">
                         <label className="block text-xs font-semibold text-zidi-text mb-2">Subject</label>
@@ -471,8 +561,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-4">
-                        <button type="button" onClick={() => goTo(1)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
-                        <button type="button" onClick={validateAndNext} className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
+                        <button type="button" onClick={() => goTo(1)} className="text-sm font-medium text-zidi-muted hover:text-zidi-text px-2 py-1 -ml-2 rounded-lg hover:bg-black/[0.03] transition-colors">← Back</button>
+                        <Button variant="gold" size="sm" onClick={validateAndNext}>Continue →</Button>
                       </div>
                     </div>
                   )}
@@ -480,11 +570,6 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {/* ── STEP 3: Learner details ── */}
                   {state.step === 3 && (
                     <div>
-                      <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 3 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">
-                        {isGroup ? 'A bit more detail' : state.learnerType === 'adult' ? 'About you' : 'About your child'}
-                      </h3>
-
                       {!isGroup && (
                         <>
                           <div className="mb-4">
@@ -538,8 +623,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-4">
-                        <button type="button" onClick={() => goTo(2)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
-                        <button type="button" onClick={validateAndNext} className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
+                        <button type="button" onClick={() => goTo(2)} className="text-sm font-medium text-zidi-muted hover:text-zidi-text px-2 py-1 -ml-2 rounded-lg hover:bg-black/[0.03] transition-colors">← Back</button>
+                        <Button variant="gold" size="sm" onClick={validateAndNext}>Continue →</Button>
                       </div>
                     </div>
                   )}
@@ -547,9 +632,6 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {/* ── STEP 4: Availability ── */}
                   {state.step === 4 && (
                     <div>
-                      <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 4 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">When are you free?</h3>
-
                       <div className="mb-4">
                         <label className="block text-xs font-semibold text-zidi-text mb-2">
                           Best days for sessions{' '}
@@ -624,8 +706,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-4">
-                        <button type="button" onClick={() => goTo(3)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
-                        <button type="button" onClick={validateAndNext} className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-sm px-6 py-2.5 rounded-[6px] transition-colors">Continue →</button>
+                        <button type="button" onClick={() => goTo(3)} className="text-sm font-medium text-zidi-muted hover:text-zidi-text px-2 py-1 -ml-2 rounded-lg hover:bg-black/[0.03] transition-colors">← Back</button>
+                        <Button variant="gold" size="sm" onClick={validateAndNext}>Continue →</Button>
                       </div>
                     </div>
                   )}
@@ -633,11 +715,6 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
                   {/* ── STEP 5: Contact ── */}
                   {state.step === 5 && (
                     <div>
-                      <p className="text-[0.7rem] font-bold tracking-[0.1em] uppercase text-gold mb-1.5">Step 5 of 5</p>
-                      <h3 className="font-display text-2xl font-bold text-zidi-text mb-6">
-                        {state.learnerType === 'adult' ? 'How do we reach you?' : 'Contact information for parent or guardian'}
-                      </h3>
-
                       <div className="mb-4">
                         <label className="block text-xs font-semibold text-zidi-text mb-1.5">
                           {state.learnerType === 'adult' ? 'Your full name' : 'Parent / guardian\'s full name'}
@@ -698,14 +775,10 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
 
                       {error && <p className="text-sm text-coral mb-3">{error}</p>}
                       <div className="flex justify-between items-center mt-6">
-                        <button type="button" onClick={() => goTo(4)} className="text-sm text-zidi-muted hover:text-zidi-text transition-colors">← Back</button>
-                        <button
-                          type="button"
-                          onClick={handleSubmit}
-                          className="bg-midnight hover:bg-midnight-2 text-ivory font-semibold text-base px-8 py-3 rounded-[6px] transition-colors"
-                        >
+                        <button type="button" onClick={() => goTo(4)} className="text-sm font-medium text-zidi-muted hover:text-zidi-text px-2 py-1 -ml-2 rounded-lg hover:bg-black/[0.03] transition-colors">← Back</button>
+                        <Button variant="gold" size="lg" onClick={handleSubmit}>
                           Submit →
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   )}
@@ -714,7 +787,8 @@ const Enrollment = forwardRef<EnrollmentHandle>(function Enrollment(_props, ref)
               </AnimatePresence>
             </>
           )}
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
