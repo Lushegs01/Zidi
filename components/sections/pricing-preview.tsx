@@ -1,0 +1,34 @@
+import { Container, IndexLabel, Section } from "@/components/ui/layout";
+import { Reveal } from "@/components/ui/reveal";
+import { ButtonLink } from "@/components/ui/button";
+import { PricingTable } from "./pricing-table";
+
+export function PricingPreview() {
+  return (
+    <Section id="pricing" size="lg" aria-labelledby="pricing-heading">
+      <Container>
+        <Reveal>
+          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+            <div className="max-w-2xl">
+              <IndexLabel index="07">Pricing</IndexLabel>
+              <h2 id="pricing-heading" className="mt-6 font-display text-d2">
+                One monthly rate. Nothing else to work out.
+              </h2>
+              <p className="mt-5 max-w-[52ch] text-lead text-ink-70">
+                Matching, scheduling and our support are included. Invoiced monthly in
+                advance — cancel with 30 days&rsquo; notice.
+              </p>
+            </div>
+            <ButtonLink href="/pricing" variant="secondary" withArrow>
+              Full pricing details
+            </ButtonLink>
+          </div>
+        </Reveal>
+
+        <Reveal delay={80} className="mt-12">
+          <PricingTable />
+        </Reveal>
+      </Container>
+    </Section>
+  );
+}
