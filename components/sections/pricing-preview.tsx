@@ -3,13 +3,6 @@ import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { PricingTable } from "./pricing-table";
 
-/**
- * Pricing preview section.
- *
- * Upgraded to bg-sand to create a clear visual distinction from the surrounding
- * bone sections. The arch badge on the recommended plan card is handled in
- * pricing-table.tsx.
- */
 export function PricingPreview() {
   return (
     <Section id="pricing" tone="sand" size="lg" aria-labelledby="pricing-heading">
@@ -19,7 +12,8 @@ export function PricingPreview() {
             <div className="max-w-2xl">
               <IndexLabel index="07">Pricing</IndexLabel>
               <h2 id="pricing-heading" className="mt-6 font-display text-d2">
-                One monthly rate. Nothing else to work out.
+                One monthly rate.{" "}
+                <em className="not-italic text-clay">Nothing else to work out.</em>
               </h2>
               <p className="mt-5 max-w-[52ch] text-lead text-ink-70">
                 Matching, scheduling and our support are included. Invoiced monthly in
@@ -32,7 +26,7 @@ export function PricingPreview() {
           </div>
         </Reveal>
 
-        <Reveal delay={80} className="mt-12">
+        <Reveal delay={80} className="mt-14">
           <PricingTable />
         </Reveal>
       </Container>
