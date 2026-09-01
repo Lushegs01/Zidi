@@ -54,8 +54,6 @@ export const promises = [
 export const trustSignals = [
   "Hand-matched by a person",
   "Live 1:1 and small group",
-  "Vetted, DBS-checked tutors",
   "Sessions in your timezone",
   "Built for families and adults",
-  "Cancel with 30 days' notice",
 ] as const;

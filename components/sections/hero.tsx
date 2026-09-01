@@ -49,10 +49,6 @@ export function Hero() {
   return (
     <section
       className="on-dark relative isolate -mt-18 flex min-h-[38.5rem] items-center overflow-hidden bg-kola pb-36 pt-[11.5rem] text-bone md:-mt-20 md:min-h-[45rem] md:pb-40 md:pt-[13rem] lg:min-h-[52rem]"
-      style={{
-        clipPath: "ellipse(110% 100% at 50% 0%)",
-        WebkitClipPath: "ellipse(110% 100% at 50% 0%)",
-      }}
     >
       {/* Background photograph with parallax wrapper */}
       <div ref={imgRef} className="absolute inset-0 -z-20 will-change-transform">
