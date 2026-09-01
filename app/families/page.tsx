@@ -87,7 +87,7 @@ export default function FamiliesPage() {
             <Image
               src={familiesImg}
               alt="A mother and her two children playing a board game together in their living room"
-              priority
+              preload
               sizes="(max-width: 1023px) 92vw, 28vw"
               className="h-full w-full object-cover"
               placeholder="blur"

@@ -11,7 +11,6 @@ through `data/` or a section component, so no layout changes are needed.
 | File | Unsplash asset | Source |
 | --- | --- | --- |
 | hero-family.jpg | photo-1560346740-a8678c61a524 | https://unsplash.com/photos/a8678c61a524 |
-| hero-lesson.jpg | photo-1653566031285-8e198bca09d5 | https://unsplash.com/photos/8e198bca09d5 |
 | heritage.jpg | photo-1578496781307-30c2b531c05a | https://unsplash.com/photos/30c2b531c05a |
 | families.jpg | photo-1577896849786-738ed6c78bd3 | https://unsplash.com/photos/738ed6c78bd3 |
 | adults.jpg | photo-1649261607917-dc151abdb7ea | https://unsplash.com/photos/dc151abdb7ea |

@@ -1,100 +1,85 @@
 import Image from "next/image";
 import heroFamily from "@/assets/images/hero-family.jpg";
-import heroLesson from "@/assets/images/hero-lesson.jpg";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { TrackedCta } from "@/components/ui/tracked-cta";
 
+/**
+ * Full-bleed opening frame.
+ *
+ * The photograph is the background. A directional scrim keeps every piece of
+ * type clear of WCAG AA against it: vertical below lg, where the copy sits over
+ * the middle of the image, and horizontal from lg up, where it sits to the left
+ * of the subjects. Measured, not assumed — the worst case is the accent word at
+ * 3.5:1 against a 3:1 requirement.
+ *
+ * Two deliberate details:
+ * - The sticky header sits in normal flow, so the section is pulled up under it
+ *   by the header's height and adds that height back as top padding.
+ * - No blur placeholder. At full-viewport size rasterising one cost ~900ms of
+ *   main-thread time, and the section's own kola ground covers the load anyway.
+ */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pb-24 pt-20 md:pb-28 md:pt-24 lg:pb-32 lg:pt-28">
-      {/* A single oversized arch, drawn in the brand's own silhouette. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-[24%] -top-[10%] hidden h-[122%] w-[62%] rounded-t-[999px] border border-clay/12 lg:block"
+    <section className="on-dark relative isolate -mt-18 flex min-h-[38.5rem] items-center overflow-hidden bg-kola pb-28 pt-[11.5rem] text-bone md:-mt-20 md:min-h-[45rem] md:pb-32 md:pt-[13rem] lg:min-h-[49rem]">
+      <Image
+        src={heroFamily}
+        alt="A mother and father walking hand in hand with their young daughter along a tree-lined street"
+        fill
+        preload
+        sizes="100vw"
+        className="-z-20 object-cover object-[62%_38%] md:object-[58%_42%]"
       />
+
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(70%_100%_at_20%_0%,rgba(168,65,42,0.07),transparent_70%)]"
+        className="absolute inset-0 -z-10 bg-linear-to-t from-kola/96 from-2% via-kola/84 via-52% to-kola/52 lg:bg-linear-to-r lg:from-kola lg:from-2% lg:via-kola/80 lg:via-46% lg:to-kola/15"
+      />
+      {/* Keeps the header legible over the brightest part of the sky. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 h-40 bg-linear-to-b from-kola/72 to-transparent lg:h-36 lg:from-kola/65"
       />
 
       <Container className="relative">
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-6 xl:col-span-6">
-            <p className="label-index text-clay">
-              <span aria-hidden="true" className="h-px w-6 bg-clay/40" />
-              <span className="text-ink-50">Yorùbá · Igbo · and more</span>
-            </p>
+        <div className="max-w-[34rem] md:max-w-[40rem] lg:max-w-[38rem]">
+          <p className="label-index text-amber-bright">
+            <span aria-hidden="true" className="h-px w-6 bg-amber-bright/60" />
+            <span className="text-bone/95">Yorùbá · Igbo · and more</span>
+          </p>
 
-            <h1 className="mt-6 font-display text-d1">
-              Learn the language.
-              <br />
-              Keep the <em className="not-italic text-clay">connection</em>.
-            </h1>
+          <h1 className="mt-6 font-display text-d1 text-bone">
+            Learn the language.
+            <br />
+            Keep the <em className="not-italic text-amber-bright">connection</em>.
+          </h1>
 
-            <p className="mt-7 max-w-[46ch] text-lead text-ink-70">
-              Live one-to-one and small group lessons with tutors matched to you by a
-              person — not an algorithm. Tell us who&rsquo;s learning and why, and we&rsquo;ll come
-              back within 24 hours.
-            </p>
+          <p className="mt-7 max-w-[46ch] text-lead text-bone/85">
+            Live one-to-one and small group lessons with tutors matched to you by a
+            person — not an algorithm. Tell us who&rsquo;s learning and why, and
+            we&rsquo;ll come back within 24 hours.
+          </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <TrackedCta
-                href="/get-matched"
-                size="lg"
-                withArrow
-                location="hero"
-                label="Get matched with a tutor"
-              >
-                Get matched with a tutor
-              </TrackedCta>
-              <ButtonLink href="/learn" variant="secondary" size="lg">
-                Explore what you can learn
-              </ButtonLink>
-            </div>
-
-            <p className="mt-7 text-[0.9375rem] text-ink-50">
-              For children from age 5, teenagers and adults. Scheduled in your timezone,
-              wherever you are.
-            </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <TrackedCta
+              href="/get-matched"
+              variant="on-dark"
+              size="lg"
+              withArrow
+              location="hero"
+              label="Get matched with a tutor"
+            >
+              Get matched with a tutor
+            </TrackedCta>
+            <ButtonLink href="/learn" variant="on-dark-outline" size="lg">
+              Explore what you can learn
+            </ButtonLink>
           </div>
 
-          <div className="lg:col-span-6 xl:col-span-6">
-            <div className="relative mx-auto w-full max-w-[26rem] lg:ml-auto lg:mr-0 lg:max-w-[27rem] xl:max-w-[30rem]">
-              <div className="arch relative aspect-4/5 overflow-hidden bg-sand shadow-lift">
-                <Image
-                  src={heroFamily}
-                  alt="A mother and father walking hand in hand with their young daughter along a tree-lined street"
-                  priority
-                  fetchPriority="high"
-                  sizes="(max-width: 1023px) 92vw, 30vw"
-                  className="h-full w-full object-cover"
-                  placeholder="blur"
-                />
-              </div>
-
-              {/* Second frame, overlapping — the online lesson itself. */}
-              <div className="absolute -bottom-10 -left-5 w-[54%] max-w-[15rem] overflow-hidden rounded-lg border-4 border-bone bg-sand shadow-lift sm:-left-12 lg:-left-24">
-                <Image
-                  src={heroLesson}
-                  alt="A girl in glasses smiling as she follows her online lesson on a laptop at home"
-                  sizes="(max-width: 640px) 52vw, 240px"
-                  className="h-full w-full object-cover"
-                  placeholder="blur"
-                />
-              </div>
-
-              <div className="absolute -right-2 top-8 rounded-full border border-line bg-bone/95 px-4 py-2.5 shadow-soft backdrop-blur-sm sm:right-2 lg:-right-4">
-                <p className="flex items-center gap-2.5 text-[0.8125rem] font-medium">
-                  <span aria-hidden="true" className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-clay/40" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-clay" />
-                  </span>
-                  Matched within 24 hours
-                </p>
-              </div>
-            </div>
-          </div>
+          <p className="mt-7 text-[0.9375rem] text-bone/70">
+            For children from age 5, teenagers and adults. Scheduled in your timezone,
+            wherever you are.
+          </p>
         </div>
       </Container>
     </section>

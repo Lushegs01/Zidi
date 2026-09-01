@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 /**
  * The Zidi mark: a doorway arch with a tone stroke above it — the acute accent
  * that sits over vowels in Yorùbá and Igbo. Monochrome, so it inherits colour
@@ -31,13 +33,16 @@ export function LogoMark({ className }: { className?: string }) {
 export function Logo({
   className,
   wordmarkClassName,
+  markClassName = "text-clay",
 }: {
   className?: string;
   wordmarkClassName?: string;
+  /** Colour of the arch mark. Overridden where the logo sits on a dark ground. */
+  markClassName?: string;
 }) {
   return (
     <span className={className}>
-      <LogoMark className="h-[1.35em] w-auto text-clay" />
+      <LogoMark className={cn("h-[1.35em] w-auto", markClassName)} />
       <span className={wordmarkClassName}>Zidi</span>
     </span>
   );
