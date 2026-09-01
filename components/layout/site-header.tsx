@@ -11,9 +11,16 @@ import { ButtonLink } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { MobileNav } from "./mobile-nav";
 
+/**
+ * Routes whose hero is a full-bleed photograph. Over one of these the header
+ * has to invert to light type until it settles into ivory on scroll.
+ */
+const DARK_HERO_ROUTES = new Set(["/"]);
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [lifted, setLifted] = useState(false);
+  const overDark = !lifted && DARK_HERO_ROUTES.has(pathname);
 
   // The bar is transparent over the top of the page and settles into ivory
   // once you start scrolling. rAF-throttled so it costs nothing.
@@ -41,16 +48,21 @@ export function SiteHeader() {
         lifted
           ? "border-b border-line bg-bone/85 backdrop-blur-md supports-[backdrop-filter]:bg-bone/75"
           : "border-b border-transparent bg-transparent",
+        overDark && "on-dark",
       )}
     >
       <div className="container-page flex h-18 items-center justify-between gap-6 md:h-20">
         <Link
           href="/"
           aria-label={`${site.name} — home`}
-          className="flex shrink-0 items-center gap-2.5 text-ink"
+          className={cn(
+            "flex shrink-0 items-center gap-2.5",
+            overDark ? "text-bone" : "text-ink",
+          )}
         >
           <Logo
             className="flex items-center gap-2.5"
+            markClassName={overDark ? "text-amber" : "text-clay"}
             wordmarkClassName="font-display text-[1.6rem] leading-none tracking-[-0.01em] md:text-[1.75rem]"
           />
         </Link>
@@ -67,14 +79,21 @@ export function SiteHeader() {
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "relative rounded-full px-3.5 py-2 text-[0.9375rem] transition-colors duration-150",
-                      active ? "text-ink" : "text-ink-70 hover:text-ink",
+                      overDark
+                        ? active
+                          ? "text-bone"
+                          : "text-bone/80 hover:text-bone"
+                        : active
+                          ? "text-ink"
+                          : "text-ink-70 hover:text-ink",
                     )}
                   >
                     {item.label}
                     <span
                       aria-hidden="true"
                       className={cn(
-                        "absolute inset-x-3.5 -bottom-0.5 h-px origin-left bg-clay transition-transform duration-300 ease-out-soft",
+                        "absolute inset-x-3.5 -bottom-0.5 h-px origin-left transition-transform duration-300 ease-out-soft",
+                        overDark ? "bg-amber" : "bg-clay",
                         active ? "scale-x-100" : "scale-x-0",
                       )}
                     />
@@ -89,13 +108,14 @@ export function SiteHeader() {
           <ButtonLink
             href="/get-matched"
             size="sm"
+            variant={overDark ? "on-dark" : "primary"}
             withArrow
             className="hidden sm:inline-flex"
             onClick={() => track("cta_click", { location: "header", label: "Get matched" })}
           >
             Get matched
           </ButtonLink>
-          <MobileNav />
+          <MobileNav onDark={overDark} />
         </div>
       </div>
     </header>

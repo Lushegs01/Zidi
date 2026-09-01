@@ -92,7 +92,7 @@ export default function AdultsPage() {
             <Image
               src={adultsImg}
               alt="A woman wearing headphones concentrating on a live lesson on her laptop"
-              priority
+              preload
               sizes="(max-width: 1023px) 92vw, 28vw"
               className="h-full w-full object-cover"
               placeholder="blur"

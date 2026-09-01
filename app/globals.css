@@ -107,6 +107,10 @@
   /* Amber — small marks, and text only on dark ground */
   --color-amber: #c08a2e;
   --color-amber-ink: #8a5f14;
+  /* Lifted amber for display type over photography, where the flat-kola amber
+     falls below 3:1. Carries headroom so swapping the hero photograph for a
+     lighter one does not immediately break contrast. */
+  --color-amber-bright: #e0b05c;
 
   /* Plum — used once, for weight */
   --color-plum: #5e2230;

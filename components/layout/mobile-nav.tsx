@@ -15,7 +15,7 @@ import { Logo } from "@/components/ui/logo";
  * Built on native <dialog>: focus trapping, Escape-to-close and inert
  * background come from the platform rather than from us re-implementing them.
  */
-export function MobileNav() {
+export function MobileNav({ onDark = false }: { onDark?: boolean }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -54,7 +54,10 @@ export function MobileNav() {
         type="button"
         onClick={show}
         aria-haspopup="dialog"
-        className="-mr-2 flex h-12 w-12 items-center justify-center rounded-full text-ink transition-colors hover:bg-ink/[0.06] lg:hidden"
+        className={cn(
+          "-mr-2 flex h-12 w-12 items-center justify-center rounded-full transition-colors lg:hidden",
+          onDark ? "text-bone hover:bg-bone/15" : "text-ink hover:bg-ink/[0.06]",
+        )}
       >
         <Menu className="h-6 w-6" />
         <span className="sr-only">Open menu</span>
@@ -79,6 +82,7 @@ export function MobileNav() {
             >
               <Logo
                 className="flex items-center gap-2.5"
+                markClassName="text-amber"
                 wordmarkClassName="font-display text-[1.6rem] leading-none tracking-[-0.01em]"
               />
             </Link>

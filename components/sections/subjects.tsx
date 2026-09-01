@@ -7,10 +7,10 @@ import { CtaArrow } from "@/components/ui/button";
 
 export function SubjectCard({
   subject,
-  priority,
+  preload,
 }: {
   subject: (typeof availableSubjects)[number];
-  priority?: boolean;
+  preload?: boolean;
 }) {
   return (
     <Link
@@ -21,7 +21,7 @@ export function SubjectCard({
         <Image
           src={subject.image}
           alt={subject.imageAlt ?? ""}
-          priority={priority}
+          preload={preload}
           sizes="(max-width: 639px) 92vw, (max-width: 1023px) 46vw, 32vw"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out-soft group-hover:scale-[1.05] motion-reduce:transform-none"
           placeholder="blur"

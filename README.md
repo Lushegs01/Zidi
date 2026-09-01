@@ -134,7 +134,9 @@ funnels, pricing interaction and FAQ opens.
 - Two self-hosted variable fonts, subset by `unicode-range`, latin preloaded (~62 KB)
 - No animation library — scroll reveals use one shared `IntersectionObserver`
 - Server components everywhere except the header, forms, accordion and pricing toggle
-- `next/image` with AVIF/WebP, responsive `sizes`, and blur placeholders
+- `next/image` with AVIF/WebP and responsive `sizes`; blur placeholders on
+  everything except the full-bleed hero, where rasterising one cost ~900ms of
+  main-thread time and the section's own background covers the load
 - Every route below is static except the four API handlers
 
 ### Accessibility

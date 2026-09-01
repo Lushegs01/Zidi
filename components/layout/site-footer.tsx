@@ -20,6 +20,7 @@ export function SiteFooter() {
             >
               <Logo
                 className="flex items-center gap-2.5"
+                markClassName="text-amber"
                 wordmarkClassName="font-display text-[1.75rem] leading-none tracking-[-0.01em]"
               />
             </Link>

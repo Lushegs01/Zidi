@@ -86,7 +86,7 @@ export default async function SubjectPage({
               <Image
                 src={subject.image}
                 alt={subject.imageAlt ?? ""}
-                priority
+                preload
                 sizes="(max-width: 1023px) 92vw, 28vw"
                 className="h-full w-full object-cover"
                 placeholder="blur"
