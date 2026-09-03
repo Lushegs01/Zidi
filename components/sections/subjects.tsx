@@ -3,7 +3,7 @@ import Link from "next/link";
 import { availableSubjects, upcomingSubjects } from "@/data/subjects";
 import { Container, IndexLabel, Section } from "@/components/ui/layout";
 import { Reveal } from "@/components/ui/reveal";
-import { CtaArrow } from "@/components/ui/button";
+import { ButtonLink, CtaArrow } from "@/components/ui/button";
 
 export function SubjectCard({
   subject,
@@ -87,68 +87,84 @@ export function Subjects() {
         </div>
 
         <Reveal className="mt-14 md:mt-16">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-line pt-8">
-            <h3 className="font-display text-d3">On the way</h3>
-            <p className="max-w-[46ch] text-[0.9375rem] text-ink-50">
-              We open a subject once we have vetted tutors who can cover the timezones
-              people are asking from. Register interest and you&rsquo;ll hear first.
-            </p>
-          </div>
+          <div className="overflow-hidden rounded-2xl border border-line bg-shell p-8 shadow-soft md:p-10 lg:p-12">
+            <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+              {/* Left Column: Context & Action */}
+              <div className="lg:col-span-6">
+                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-clay">
+                  On the way · Coming soon &amp; by request
+                </p>
+                <h3 className="mt-4 font-display text-[1.875rem] leading-tight md:text-[2.25rem]">
+                  More languages &amp; skills in the pipeline.
+                </h3>
+                <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink-70">
+                  We open a subject once we have vetted tutors who can cover the timezones
+                  people are asking from. If you are waiting for one of these — or need a
+                  different language like Twi, Swahili, Wolof or Amharic — register your
+                  interest and you&rsquo;ll hear first.
+                </p>
+                <div className="mt-7">
+                  <ButtonLink href="/contact?topic=waitlist" variant="secondary" withArrow>
+                    Register interest / Join waitlist
+                  </ButtonLink>
+                </div>
+              </div>
 
-          {/* Upcoming subjects — arch top radius on each card, warm sand container */}
-          <div className="mt-8 overflow-hidden rounded-lg bg-sand">
-            <ul className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
-              {upcomingSubjects.map((subject) => (
-                <li key={subject.slug} className="bg-bone">
+              {/* Right Column: Combined interactive list of upcoming subjects */}
+              <div className="lg:col-span-6">
+                <div className="divide-y divide-line rounded-xl border border-line bg-bone p-2 sm:p-3">
+                  {upcomingSubjects.map((subject) => (
+                    <Link
+                      key={subject.slug}
+                      href={`/contact?topic=waitlist&subject=${subject.slug}`}
+                      className="group flex items-center justify-between gap-4 rounded-lg p-3.5 transition-colors duration-150 hover:bg-sand/70"
+                    >
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="font-display text-[1.125rem] font-medium leading-none text-ink group-hover:text-clay">
+                            {subject.name}
+                          </span>
+                          <span className="rounded-full bg-sand px-2 py-0.5 text-[0.625rem] font-semibold uppercase tracking-wider text-ink-50">
+                            {subject.kind}
+                          </span>
+                        </div>
+                        <p className="mt-1 truncate text-[0.8125rem] text-ink-50">
+                          {subject.tagline}
+                        </p>
+                      </div>
+                      <span className="flex shrink-0 items-center gap-1 text-[0.8125rem] font-medium text-clay">
+                        <span>Waitlist</span>
+                        <CtaArrow className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    </Link>
+                  ))}
+
+                  {/* Something else row */}
                   <Link
-                    href={`/contact?topic=waitlist&subject=${subject.slug}`}
-                    className="group flex h-full flex-col p-6 transition-colors duration-200 hover:bg-sand/70"
-                    style={{ borderRadius: "40px 40px 0 0" }}
+                    href="/contact?topic=waitlist"
+                    className="group flex items-center justify-between gap-4 rounded-lg p-3.5 transition-colors duration-150 hover:bg-sand/70"
                   >
-                    <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-50">
-                      Coming soon
-                    </span>
-                    <span className="mt-3 font-display text-[1.75rem] leading-none tracking-[-0.015em]">
-                      {subject.name}
-                    </span>
-                    <span className="mt-2 text-[0.9375rem] italic text-ink-70">
-                      {subject.tagline}
-                    </span>
-                    <span className="mt-4 flex-1 text-[0.875rem] leading-relaxed text-ink-50">
-                      {subject.blurb}
-                    </span>
-                    <span className="group/btn mt-5 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-clay">
-                      Register interest
-                      <CtaArrow className="h-3.5 w-3.5" />
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="font-display text-[1.125rem] font-medium leading-none text-clay">
+                          Something else?
+                        </span>
+                        <span className="rounded-full bg-clay/10 px-2 py-0.5 text-[0.625rem] font-semibold uppercase tracking-wider text-clay">
+                          By request
+                        </span>
+                      </div>
+                      <p className="mt-1 truncate text-[0.8125rem] text-ink-50">
+                        Twi, Swahili, Wolof, Amharic &amp; others
+                      </p>
+                    </div>
+                    <span className="flex shrink-0 items-center gap-1 text-[0.8125rem] font-medium text-clay">
+                      <span>Ask us</span>
+                      <CtaArrow className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </Link>
-                </li>
-              ))}
-              <li className="bg-sand/70">
-                <Link
-                  href="/contact?topic=waitlist"
-                  className="group flex h-full flex-col p-6 transition-colors duration-200 hover:bg-sand"
-                >
-                  <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-clay">
-                    Something else?
-                  </span>
-                  <span className="mt-3 font-display text-[1.75rem] leading-none tracking-[-0.015em]">
-                    Ask us anyway
-                  </span>
-                  <span className="mt-2 text-[0.9375rem] italic text-ink-70">
-                    Twi, Swahili, Wolof, Amharic&hellip;
-                  </span>
-                  <span className="mt-4 flex-1 text-[0.875rem] leading-relaxed text-ink-50">
-                    If you need a language or skill we haven&rsquo;t listed, tell us. We
-                    have found tutors for one-off requests before and we will try again.
-                  </span>
-                  <span className="group/btn mt-5 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-clay">
-                    Tell us what you need
-                    <CtaArrow className="h-3.5 w-3.5" />
-                  </span>
-                </Link>
-              </li>
-            </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </Reveal>
       </Container>
