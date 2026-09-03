@@ -9,7 +9,6 @@ import { Subjects } from "@/components/sections/subjects";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { Promises } from "@/components/sections/promises";
 import { Pathways } from "@/components/sections/pathways";
-import { TutorStandards } from "@/components/sections/tutor-standards";
 import { Testimonials } from "@/components/sections/testimonials";
 import { PricingPreview } from "@/components/sections/pricing-preview";
 import { FaqSection } from "@/components/sections/faq";
@@ -32,10 +31,9 @@ export default function HomePage() {
       <HowItWorks />
       <Promises />
       <Pathways />
-      <TutorStandards />
       <Testimonials />
       <PricingPreview />
-      <FaqSection items={homeFaqs} analyticsLabel="home" />
+      <FaqSection items={homeFaqs} index="07" analyticsLabel="home" />
       <FinalCta />
       <JsonLd data={jsonLd(faqSchema(homeFaqs))} />
     </>

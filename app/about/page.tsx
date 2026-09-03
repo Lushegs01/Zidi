@@ -9,7 +9,6 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Container, IndexLabel, Section } from "@/components/ui/layout";
 import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
-import { TutorStandards } from "@/components/sections/tutor-standards";
 import { Promises } from "@/components/sections/promises";
 import { FinalCta } from "@/components/sections/final-cta";
 
@@ -147,14 +146,12 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <TutorStandards />
-
       <Section size="md" aria-labelledby="facts-heading">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-6">
               <Reveal>
-                <IndexLabel index="07">The company</IndexLabel>
+                <IndexLabel index="03">The company</IndexLabel>
                 <h2 id="facts-heading" className="mt-6 font-display text-d2">
                   The plain facts.
                 </h2>

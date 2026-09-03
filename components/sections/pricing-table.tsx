@@ -6,7 +6,6 @@ import {
   currencies,
   formatPrice,
   plans,
-  billingFacts,
   SESSION_MINUTES,
   type Currency,
 } from "@/data/pricing";
@@ -103,22 +102,6 @@ export function PricingTable({ compact = false }: { compact?: boolean }) {
         Every session is {SESSION_MINUTES} minutes. Group pricing is per person — you bring
         the group, we don&rsquo;t place strangers together.
       </p>
-
-      {/* ── Billing facts ─────────────────────────────────────────── */}
-      {!compact && (
-        <div className="mt-14 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {billingFacts.map((fact) => (
-            <div key={fact.title} className="bg-bone px-6 py-7">
-              <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-clay">
-                {fact.title}
-              </p>
-              <p className="mt-3 text-[0.875rem] leading-relaxed text-ink-70">
-                {fact.detail}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
