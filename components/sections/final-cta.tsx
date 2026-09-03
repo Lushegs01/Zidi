@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRef, useEffect } from "react";
 import joy from "@/assets/images/joy.jpg";
 import { Container } from "@/components/ui/layout";
 import { Reveal } from "@/components/ui/reveal";
-import { ButtonLink } from "@/components/ui/button";
 import { TrackedCta } from "@/components/ui/tracked-cta";
 
 /**
@@ -88,21 +86,7 @@ export function FinalCta({
             >
               Get matched with a tutor
             </TrackedCta>
-            <ButtonLink href="/contact" variant="on-dark-outline" size="lg">
-              Talk to Zidi first
-            </ButtonLink>
           </div>
-
-          <p className="mt-8 text-[0.9375rem] text-bone/55">
-            Prefer to teach?{" "}
-            <Link
-              href="/teach"
-              className="text-amber underline underline-offset-4 hover:text-bone"
-            >
-              Apply to teach with Zidi
-            </Link>
-            .
-          </p>
         </Reveal>
       </Container>
     </section>
